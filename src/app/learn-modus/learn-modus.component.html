@@ -1,37 +1,30 @@
-<div>
-    <a routerLinkActive="active" routerLink="single-modus" class="btn primary">Single Modus</a>
-    <a routerLinkActive="active" routerLink="multi-modus" class="btn primary">Multi Modus</a>
-</div>
+
 <div class="card text-center">
     <div class="card-header">
         <ul class="nav nav-pills card-header-pills">
             <li class="nav-item">
-                <a href="#home" class="nav-link active" data-bs-toggle="tab">Home</a>
+                <a class="nav-link active" data-bs-toggle="tab" routerLinkActive="active" routerLink="single-modus" >Single Modus</a>
             </li>
             <li class="nav-item">
-                <a href="#profile" class="nav-link" data-bs-toggle="tab">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a href="#messages" class="nav-link" data-bs-toggle="tab">Messages</a>
+                <a class="nav-link active" data-bs-toggle="tab" routerLinkActive="active" routerLink="multi-modus" >Multi Modus</a>
             </li>
         </ul>
     </div>
     <div class="card-body">
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="home">
-                <h5 class="card-title">Home tab content</h5>
-                <p class="card-text">Here is some example text to make up the tab's content. Replace it with your own text anytime.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="tab-pane fade show active" id="single-modus">
+                <app-single-modus></app-single-modus>
             </div>
-            <div class="tab-pane fade" id="profile">
-                <h5 class="card-title">Profile tab content</h5>
-                <p class="card-text">Here is some example text to make up the tab's content. Replace it with your own text anytime.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <div class="tab-pane fade" id="messages">
-                <h5 class="card-title">Messages tab content</h5>
-                <p class="card-text">Here is some example text to make up the tab's content. Replace it with your own text anytime.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="tab-pane fade" id="multi-modus">
+                <div class="col-6">
+                    <div class="card border-dark mb-4">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title">Dark card title</h5>
+                            <p class="card-text">Some dummy text to make up the card's content. You can replace it anytime.</p>
+                        </div>
+                    </div>
+                </div>
+                <app-multi-modus></app-multi-modus>
             </div>
         </div>
     </div>
