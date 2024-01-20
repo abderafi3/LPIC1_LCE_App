@@ -1,7 +1,7 @@
 export interface Question{
     id: number;
-    discreption: string;
+    question: string;
     type: string;
-    answer: string[];
+    answers: string[];
     solution: string[];
 }
