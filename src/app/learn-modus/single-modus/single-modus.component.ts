@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Question } from 'src/app/questions/question';
 import { QuestionService } from 'src/app/questions/question.service';
@@ -11,11 +11,16 @@ import { QuestionService } from 'src/app/questions/question.service';
 })
 export class SingleModusComponent implements OnInit {
 question : Question | undefined;
-constructor(private route : ActivatedRoute, 
-  private questionService: QuestionService){}
+constructor(private route : ActivatedRoute, private router : Router,
+  private questionService: QuestionService){
+    this.route.params.subscribe(params => {const id = params['id']});
+  }
   
+
+
   ngOnInit(): void {
     this.getQuestion();
+    
   }
   
   getQuestion() : void {
@@ -24,9 +29,10 @@ constructor(private route : ActivatedRoute,
     .subscribe(question => this.question = question)
   }
 
-  onClickNext(){
-    let id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    this.questionService.getQuestion(id+1)
-    .subscribe(question => this.question = question)
+  onClickNext(id : number){
+const nextQuestion = id+1;
+this.questionService.getQuestion(nextQuestion)
+.subscribe(question => this.question = question)
+this.router.navigate(['/', nextQuestion])
   }
 }
