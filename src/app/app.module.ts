@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { QuestionsDataService } from './questions/questions-data.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,9 @@ import { SingleModusComponent } from './learn-modus/single-modus/single-modus.co
 import { MultiModusComponent } from './learn-modus/multi-modus/multi-modus.component';
 import { CheckResultComponent } from './check-modus/check-result/check-result.component';
 import { ExamResultComponent } from './exam-modus/exam-result/exam-result.component';
+import { SingleChoiceComponent } from './questions/question-item/single-choice/single-choice.component';
+import { MultiChoiceComponent } from './questions/question-item/multi-choice/multi-choice.component';
+import { FillInComponent } from './questions/question-item/fill-in/fill-in.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +36,16 @@ import { ExamResultComponent } from './exam-modus/exam-result/exam-result.compon
     SingleModusComponent,
     MultiModusComponent,
     CheckResultComponent,
-    ExamResultComponent
+    ExamResultComponent,
+    SingleChoiceComponent,
+    MultiChoiceComponent,
+    FillInComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(QuestionsDataService, {dataEncapsulation: false})
   ],
   providers: [],
   bootstrap: [AppComponent]

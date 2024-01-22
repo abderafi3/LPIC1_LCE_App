@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { SingleModusComponent } from './single-modus/single-modus.component';
 
 @Component({
   selector: 'app-learn-modus',

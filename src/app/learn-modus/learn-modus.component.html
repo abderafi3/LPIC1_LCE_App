@@ -1,24 +1,18 @@
-
+<div class="container">
 <div class="card text-center">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" routerLinkActive="active" routerLink="single-modus" #multi>Single Modus</a>
+                <a  class="nav-link" data-bs-toggle="tab" routerLinkActive="active" routerLink="single-modus/1">Single Modus</a>
             </li>
             <li class="nav-item">
-                <a  class="nav-link" data-bs-toggle="tab" routerLinkActive="active" routerLink="multi-modus" #single>Multi Modus</a>
+                <a  class="nav-link" data-bs-toggle="tab" routerLinkActive="active" routerLink="multi-modus">Multi Modus</a>
             </li>
         </ul>
     </div>
     <div class="card-body">
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="single">
-                <app-single-modus></app-single-modus>
-
-            </div>
-            <div class="tab-pane fade show active" id="multi">
-                <app-multi-modus></app-multi-modus>
-            </div>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
