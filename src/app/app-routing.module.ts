@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:'', redirectTo:'/home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
   {path: 'learn-modus', component: LearnModusComponent, children:[
-    {path: '', redirectTo: 'single-modus/:id', pathMatch: 'full'},
+    {path: '', redirectTo: 'single-modus/1', pathMatch: 'full'},
     {path: 'single-modus/:id', component: SingleModusComponent},
     {path: 'multi-modus', component: MultiModusComponent}
   ]},

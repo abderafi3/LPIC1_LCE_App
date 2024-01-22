@@ -24,4 +24,9 @@ constructor(private route : ActivatedRoute,
     .subscribe(question => this.question = question)
   }
 
+  onClickNext(){
+    let id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    this.questionService.getQuestion(id+1)
+    .subscribe(question => this.question = question)
+  }
 }
