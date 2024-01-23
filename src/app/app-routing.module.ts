@@ -18,6 +18,7 @@ const routes: Routes = [
     {path: 'multi-modus', component: MultiModusComponent}
   ]},
   {path: 'check-modus', component: CheckModusComponent, children:[
+    {path: 'check-modus/:id', component:CheckModusComponent},
     {path: 'check-result', component: CheckResultComponent}
   ]},
   {path: 'exam-modus', component: ExamModusComponent, children: [

@@ -19,9 +19,13 @@ export class QuestionService {
     return this.http.get<Question[]>(this.questionsUrl);
   }
 
-  getQuestion(id: number): Observable<Question> {
+  getQuestion(id: number | null): Observable<Question> {
     const url = `${this.questionsUrl}/${id}`;
     return this.http.get<Question>(url);
+  }
+
+  checkCorrectAnswer(){
+    
   }
 
 }

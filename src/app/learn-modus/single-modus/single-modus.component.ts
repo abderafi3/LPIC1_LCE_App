@@ -11,14 +11,12 @@ import { QuestionService } from 'src/app/questions/question.service';
 })
 export class SingleModusComponent implements OnInit {
 question : Question | undefined;
+showSolution : boolean = false;
 constructor(private route : ActivatedRoute, private router : Router,
-  private questionService: QuestionService){
-    this.route.params.subscribe(params => {const id = params['id']});
-  }
-  
-
+  private questionService: QuestionService){}
 
   ngOnInit(): void {
+    const questionId =this.route.snapshot.paramMap.get('id');
     this.getQuestion();
     
   }
@@ -29,10 +27,27 @@ constructor(private route : ActivatedRoute, private router : Router,
     .subscribe(question => this.question = question)
   }
 
-  onClickNext(id : number){
-const nextQuestion = id+1;
-this.questionService.getQuestion(nextQuestion)
-.subscribe(question => this.question = question)
-this.router.navigate(['/', nextQuestion])
+  onClickNext(){
+  const questionId = this.question ? this.question.id : null;
+  if (questionId !==null) {
+    this.questionService.getQuestion(questionId+1)
+    .subscribe(question => this.question = question);
+
   }
+  this.showSolution = false;
+  }
+
+  onClickPrev(){
+    const questionId = this.question ? this.question.id : null;
+    if (questionId !==null) {
+    this.questionService.getQuestion(questionId -1 )
+    .subscribe(question => this.question = question)
+    this.showSolution = false;
+    }
+  }
+
+  onClickSolution(){
+    this.showSolution = true;
+  }
+
 }

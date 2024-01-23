@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Question } from 'src/app/questions/question';
 import { QuestionService } from 'src/app/questions/question.service';
@@ -10,6 +10,8 @@ import { QuestionService } from 'src/app/questions/question.service';
 })
 export class MultiModusComponent implements OnInit{
 questions : Question[] = [];
+questionId : number | undefined;
+showSolution : boolean = false;
 constructor(private questionService: QuestionService){}
 
 ngOnInit(): void {
@@ -19,5 +21,9 @@ ngOnInit(): void {
 getQuestions() : void {
   this.questionService.getQuestions()
   .subscribe(questions => this.questions = questions);
+}
+
+onClickSolution(){
+  this.showSolution = true;
 }
 }
