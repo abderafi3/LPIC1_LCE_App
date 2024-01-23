@@ -32,7 +32,7 @@ constructor(private route : ActivatedRoute, private router : Router,
   if (questionId !==null) {
     this.questionService.getQuestion(questionId+1)
     .subscribe(question => this.question = question);
-
+    this.router.navigate(['../single-modus', { id: questionId }]);
   }
   this.showSolution = false;
   }
