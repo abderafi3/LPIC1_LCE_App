@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Question } from 'src/app/questions/question';
 import { QuestionService } from 'src/app/questions/question.service';
@@ -11,39 +11,33 @@ import { QuestionService } from 'src/app/questions/question.service';
 })
 export class SingleModusComponent implements OnInit {
 question : Question | undefined;
+questionId : number = 1;
 showSolution : boolean = false;
 constructor(private route : ActivatedRoute, private router : Router,
   private questionService: QuestionService){}
 
   ngOnInit(): void {
-    const questionId =this.route.snapshot.paramMap.get('id');
+    this.route.params.subscribe((data : Params)=> {
+      this.questionId = data['id'];
+    } )
     this.getQuestion();
-    
   }
   
   getQuestion() : void {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    this.questionService.getQuestion(id)
+    this.questionService.getQuestion(this.questionId)
     .subscribe(question => this.question = question)
   }
 
   onClickNext(){
-  const questionId = this.question ? this.question.id : null;
-  if (questionId !==null) {
-    this.questionService.getQuestion(questionId+1)
-    .subscribe(question => this.question = question);
-    this.router.navigate(['../single-modus', { id: questionId }]);
-  }
-  this.showSolution = false;
+    this.router.navigate(['learn-modus/single-modus', ++this.questionId]);
+    this.getQuestion();
+    this.showSolution = false;
   }
 
   onClickPrev(){
-    const questionId = this.question ? this.question.id : null;
-    if (questionId !==null) {
-    this.questionService.getQuestion(questionId -1 )
-    .subscribe(question => this.question = question)
+    this.router.navigate(['learn-modus/single-modus', --this.questionId]);
+    this.getQuestion();
     this.showSolution = false;
-    }
   }
 
   onClickSolution(){
