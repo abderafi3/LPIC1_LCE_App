@@ -21,6 +21,7 @@ import { ExamResultComponent } from './exam-modus/exam-result/exam-result.compon
 import { SingleChoiceComponent } from './questions/question-item/single-choice/single-choice.component';
 import { MultiChoiceComponent } from './questions/question-item/multi-choice/multi-choice.component';
 import { FillInComponent } from './questions/question-item/fill-in/fill-in.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,11 +40,13 @@ import { FillInComponent } from './questions/question-item/fill-in/fill-in.compo
     ExamResultComponent,
     SingleChoiceComponent,
     MultiChoiceComponent,
-    FillInComponent
+    FillInComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(QuestionsDataService, {dataEncapsulation: false})
   ],

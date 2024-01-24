@@ -10,8 +10,10 @@ import { QuestionService } from 'src/app/questions/question.service';
 })
 export class MultiModusComponent implements OnInit{
 questions : Question[] = [];
-questionId : number | undefined;
+questionId : number = 1;
 showSolution : boolean = false;
+isClicked : boolean = false;
+
 constructor(private questionService: QuestionService){}
 
 ngOnInit(): void {
@@ -23,7 +25,9 @@ getQuestions() : void {
   .subscribe(questions => this.questions = questions);
 }
 
-onClickSolution(){
-  this.showSolution = true;
+onClickSolution(i : number){
+  if (this.questionId == i+1) {
+
+  }
 }
 }

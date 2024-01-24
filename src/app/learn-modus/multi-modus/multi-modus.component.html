@@ -1,4 +1,4 @@
-<div *ngFor="let question of questions" >
+<div *ngFor="let question of questions; let i = index" >
 
     <div class="card mt-3 ">
         <div class="card-header">
@@ -8,11 +8,11 @@
 
         <ul class="list-group list-group-flush"  *ngFor="let answer of question.answers">
             <li *ngIf="question.type !== 'fillIn' && !showSolution" class="list-group-item">{{answer}}</li>
-            <li *ngIf="showSolution && question.id === questionId"  [class.bg-success] = "question.solution.includes(answer)"
+            <li  [class.bg-success] = "question.solution.includes(answer) && i+1 === question.id"
              class="list-group-item ">{{answer}}</li>
         </ul>
         <div> <button type="button" class="btn btn-outline-success mt-3 mb-3"
-        (click)="onClickSolution()" >Show Correct Answer</button></div>
+        (click)="onClickSolution(i)" >Show Correct Answer</button></div>
     </div>
     
 </div>

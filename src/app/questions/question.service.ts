@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Question } from './question';
 
 @Injectable({
@@ -22,10 +21,6 @@ export class QuestionService {
   getQuestion(id: number | null): Observable<Question> {
     const url = `${this.questionsUrl}/${id}`;
     return this.http.get<Question>(url);
-  }
-
-  checkCorrectAnswer(){
-    
   }
 
 }

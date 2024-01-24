@@ -17,12 +17,10 @@ const routes: Routes = [
     {path: 'single-modus/:id', component: SingleModusComponent},
     {path: 'multi-modus', component: MultiModusComponent}
   ]},
-  {path: 'check-modus/:id', component: CheckModusComponent, children:[
-    {path: 'check-result', component: CheckResultComponent}
-  ]},
-  {path: 'exam-modus', component: ExamModusComponent, children: [
-    {path: 'exam-result', component: ExamResultComponent}
-  ]}
+  {path: 'check-modus/:id', component: CheckModusComponent},
+  {path: 'check-result', component: CheckResultComponent},
+  {path: 'exam-modus/:id', component: ExamModusComponent},
+  {path: 'exam-result', component: ExamResultComponent}
 
 ];
 
