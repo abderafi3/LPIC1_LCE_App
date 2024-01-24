@@ -67,13 +67,11 @@ constructor(private questionService: QuestionService,
       const equalsCheck = (solution : string[], userAsnwerMulti : string[]) =>
       solution.length === userAsnwerMulti.length &&
       solution.every((v, i) => v === userAsnwerMulti[i]);
-
-      if(solution && equalsCheck(solution, this.userAsnwerMulti)){
+     
+      if(solution && equalsCheck(solution, this.userAsnwerMulti)){              //Correct answers
         this.answerService.addCorrectAnswer(new Answer(this.questionId, this.userAsnwerMulti))
-        console.log('Correct')
-      } else{
+      } else{                                                                   //Incorrect answers
         this.answerService.addWrongAnswer(new Answer(this.questionId, this.userAsnwerMulti))
-        console.log('incorrect')
       }
       }
       //routing and rest
