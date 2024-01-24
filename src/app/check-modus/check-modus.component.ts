@@ -39,15 +39,20 @@ constructor(private questionService: QuestionService,
     }
 
   
-    getCheckedAnswer(e: any, answer :string){
+    getCheckedAnswer(e: any, answer :string) : string[]{
       if(e.target.checked){
-        console.log(answer)
         this.userAsnwerMulti.push(answer);
+      } else {
+        let index = this.userAsnwerMulti.indexOf(answer);
+        if (index !== -1) {
+          this.userAsnwerMulti.splice(index, 1);
+        }
       }
+      return this.userAsnwerMulti.sort()
     }
     
     onSubmit(){
-      let solution = this.getQuestion()?.solution;
+      let solution = this.getQuestion()?.solution.sort();
       let userAsnwer : string[] = [];
       userAsnwer.push(this.inputText);
       // Fill-in questions && single-choice questions
@@ -94,9 +99,6 @@ constructor(private questionService: QuestionService,
       this.answerService.getCorrectAnswers()
       console.log('Incorrect answers')
       this.answerService.getWrongAnswers()
-      //let sol = this.getQuestion()?.solution;
-      //solution?.forEach(e => console.log('solution: ', e));
-      //let us = this.userAsnwerMulti;
 
     }
 
