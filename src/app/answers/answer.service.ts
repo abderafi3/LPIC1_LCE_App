@@ -16,7 +16,9 @@ export class AnswerService {
   skippedQuestionCount : number = 0;
   popUpCount : number = 7;
   modalRef : any;
- questionId: number | undefined ;
+  questionId: number | undefined ;
+  
+  uniqueWrongAnswers : Answer[] = [];
 
   constructor(
     private modalService: NgbModal,
@@ -36,11 +38,21 @@ export class AnswerService {
     })
   }
 
-  getWrongAnswers(){
+  getWrongAnswers(): Answer []{
     this.wrongAnswers.forEach(item => {
       console.log(item)
     })
+    return this.wrongAnswers;
   }
+
+  getUniqueWrongAnswers(){
+    this.uniqueWrongAnswers = [...new Map(this.wrongAnswers.map(v => [v.questionId, v])).values()];
+    this.uniqueWrongAnswers.forEach(item => {
+      console.log(item)
+    })
+  }
+
+
 
   openPopup() {
     this.modalRef = this.modalService.open(PopupContentComponent);

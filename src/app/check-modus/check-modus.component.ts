@@ -107,14 +107,14 @@ constructor(private questionService: QuestionService,
     }
 
     test(){
-
-      this.answerService.openPopup();
       // console.log(this.answerService.correctAnswers.length)
       console.log(this.answerService.wrongAnswers.length)
+      console.log(this.answerService.uniqueWrongAnswers.length)
       // console.log('Correct answers')
       // this.answerService.getCorrectAnswers()
       // console.log('Incorrect answers')
       this.answerService.getWrongAnswers()
+      this.answerService.getUniqueWrongAnswers()
 
     }
 
