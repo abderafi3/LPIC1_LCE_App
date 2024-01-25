@@ -12,6 +12,7 @@ import { ExamResultComponent } from './exam-modus/exam-result/exam-result.compon
 const routes: Routes = [
   {path:'', redirectTo:'/home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
+  {path: 'learn-modus', redirectTo:'learn-modus/single-modus/1', pathMatch:'full'},
   {path: 'learn-modus', component: LearnModusComponent, children:[
     {path: 'single-modus', redirectTo:'single-modus/1', pathMatch:'full'},
     {path: 'single-modus/:id', component: SingleModusComponent},

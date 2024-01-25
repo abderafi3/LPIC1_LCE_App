@@ -1,5 +1,4 @@
 import { Component, OnInit,  } from '@angular/core';
-import { FormControl, NgModel } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Question } from '../questions/question';
@@ -57,43 +56,52 @@ constructor(private questionService: QuestionService,
       userAsnwer.push(this.inputText);
       // Fill-in questions && single-choice questions
       if(this.getQuestion()?.type !== 'multi'){
-        if(solution && solution[0] === this.inputText){
-          this.answerService.addCorrectAnswer(new Answer(this.questionId, userAsnwer))
-          this.router.navigate(['check-modus', ++this.questionId]);
-          this.getQuestion();
-         } else {
-          this.answerService.addWrongAnswer(new Answer(this.questionId, userAsnwer))
-          this.answerService.openPopup();  
-          if(this.questionId && this.questionId >= 2)
-          this.router.navigate(['check-modus', --this.questionId]);
-          this.getQuestion();
-         
-          
+              if(solution && solution[0] === this.inputText){
+              this.answerService.addCorrectAnswer(new Answer(this.questionId, userAsnwer))
+              this.router.navigate(['check-modus', ++this.questionId]);
+              this.getQuestion();
+              } else {
+                this.answerService.addWrongAnswer(new Answer(this.questionId, userAsnwer))
+                this.answerService.popUpCount--;
+                this.answerService.openPopup();  
+                    if(this.questionId && this.questionId >= 2 && this.answerService.popUpCount > 0){ 
+                      this.router.navigate(['check-modus', --this.questionId]);
+                      this.getQuestion();
+                    }
+                    else if(this.answerService.popUpCount <= 0){
+                      this.router.navigate(['learn-modus']);
+                    }
          }
         } else {
-      // Multi-Choice questions
-      const equalsCheck = (solution : string[], userAsnwerMulti : string[]) =>
-      solution.length === userAsnwerMulti.length &&
-      solution.every((v, i) => v === userAsnwerMulti[i]);
+          // Multi-Choice questions
+          const equalsCheck = (solution : string[], userAsnwerMulti : string[]) =>
+          solution.length === userAsnwerMulti.length &&
+          solution.every((v, i) => v === userAsnwerMulti[i]);
      
-      if(solution && equalsCheck(solution, this.userAsnwerMulti)){              //Correct answers
-        this.answerService.addCorrectAnswer(new Answer(this.questionId, this.userAsnwerMulti))
-        this.router.navigate(['check-modus', ++this.questionId]);
-        this.getQuestion();
-      } else{                                                                   //Incorrect answers
-        this.answerService.addWrongAnswer(new Answer(this.questionId, this.userAsnwerMulti))
-        this.answerService.openPopup();
-        if(this.questionId && this.questionId >= 2)
-        this.router.navigate(['check-modus', --this.questionId]);
-        this.getQuestion();
-    
-      }
-      }
+              if(solution && equalsCheck(solution, this.userAsnwerMulti)){              //Correct answers
+                this.answerService.addCorrectAnswer(new Answer(this.questionId, this.userAsnwerMulti))
+                this.router.navigate(['check-modus', ++this.questionId]);
+                this.getQuestion();
+              } else{                                                                   //Incorrect answers
+                this.answerService.addWrongAnswer(new Answer(this.questionId, this.userAsnwerMulti))
+                this.answerService.popUpCount--;
+                this.answerService.openPopup();
+                    if(this.questionId && this.questionId >= 2 && this.answerService.popUpCount> 0){
+                      this.router.navigate(['check-modus', --this.questionId]);
+                      this.getQuestion();
+                    }
+              
+                    else if(this.answerService.popUpCount <= 0){
+                      this.router.navigate(['learn-modus']);
+                    }
+              }
+            }
       //routing and rest
 
          this.inputText = '';
          this.userAsnwerMulti = [];
-    }
+
+  }
 
     onClickSkip(){
       this.answerService.skippedQuestionCount++;

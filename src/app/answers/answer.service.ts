@@ -56,9 +56,11 @@ export class AnswerService {
 
   openPopup() {
     this.modalRef = this.modalService.open(PopupContentComponent);
+    
   }
 
   closePopup() { 
+ 
     this.modalRef.close();
   }
 

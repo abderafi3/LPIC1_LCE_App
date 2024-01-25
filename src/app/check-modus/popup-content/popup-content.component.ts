@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Route, Router } from '@angular/router';
+
+import { Component} from '@angular/core';
+import {  Router } from '@angular/router';
 import { AnswerService } from 'src/app/answers/answer.service';
-import { QuestionService } from 'src/app/questions/question.service';
+
 
 @Component({
   selector: 'app-popup-content',
@@ -10,8 +11,17 @@ import { QuestionService } from 'src/app/questions/question.service';
 })
 export class PopupContentComponent {
   questionId: number | undefined ;
+  count : number = 7 ;
+
   constructor(private answerService: AnswerService,
-              private router :Router,){}
+              private router :Router){}
+  
+  onPopupOpen(){
+    this.count = this.answerService.popUpCount;
+    return this.count
+  }
+
+  
 
   onClickClose(){
     this.answerService.closePopup();   
