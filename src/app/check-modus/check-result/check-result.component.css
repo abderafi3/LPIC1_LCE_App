@@ -1,0 +1,37 @@
+.counter{
+    color: #fff;
+    background: linear-gradient(to right bottom, #FFD81B, #f9b12a);
+    font-family: 'Dosis', sans-serif;
+    text-align: center;
+    width: 180px;
+    height: 180px;
+    padding: 40px 20px 20px;
+    margin: 0 auto;
+    border-radius: 10px 10px 100px 100px;
+    box-shadow: 0 0 15px -5px rgba(0,0,0,0.3);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.counter .counter-value{
+    font-size: 55px;
+    font-weight: 600;
+    line-height: 40px;
+    margin: 0 0 15px;
+    display: block;
+}
+.counter h3{
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 20px;
+}
+.counter.green{ background: linear-gradient(to right bottom, #a9dd23, #52C242); }
+.counter.red{ background: linear-gradient(to right bottom, #FA8072, #C70039 ); }
+.counter.blue{ background: linear-gradient(to right bottom, #00C5EF, #0092f4); }
+
+@media screen and (max-width:990px){
+    .counter{ margin-bottom: 40px; }
+}

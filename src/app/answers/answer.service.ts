@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Answer } from './answer';
-import { QuestionService } from '../questions/question.service';
+import {  NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PopupContentComponent } from '../check-modus/popup-content/popup-content.component';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnswerService {
 
-  answers : Answer[] | undefined;
+  //answers : Answer[] | undefined;
+
   correctAnswers : Answer[] = [];
   wrongAnswers : Answer[] = [];
-  correctAnswerCount : number = 0;
-  wrongAnswerCount : number = 0;
   skippedQuestionCount : number = 0;
   popUpCount : number = 7;
+  modalRef : any;
+ questionId: number | undefined ;
 
-  constructor(private questionService: QuestionService) { }
+  constructor(
+    private modalService: NgbModal,
+    ) { }
 
   addCorrectAnswer(answer : Answer){
     this.correctAnswers.push(answer);
@@ -37,7 +42,16 @@ export class AnswerService {
     })
   }
 
-  addAnswer(id : number, answer: string[]){
-    this.answers?.push(new Answer(id, answer));
-    }
+  openPopup() {
+    this.modalRef = this.modalService.open(PopupContentComponent);
+  }
+
+  closePopup() { 
+    this.modalRef.close();
+  }
+
+  // addAnswer(id : number, answer: string[]){
+  //   this.answers?.push(new Answer(id, answer));
+  //   }
 }
+

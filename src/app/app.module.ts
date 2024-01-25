@@ -13,7 +13,6 @@ import { CheckModusComponent } from './check-modus/check-modus.component';
 import { ExamModusComponent } from './exam-modus/exam-modus.component';
 import { QuestionListComponent } from './questions/question-list/question-list.component';
 import { QuestionItemComponent } from './questions/question-item/question-item.component';
-import { ScoreComponent } from './score/score.component';
 import { SingleModusComponent } from './learn-modus/single-modus/single-modus.component';
 import { MultiModusComponent } from './learn-modus/multi-modus/multi-modus.component';
 import { CheckResultComponent } from './check-modus/check-result/check-result.component';
@@ -22,6 +21,7 @@ import { SingleChoiceComponent } from './questions/question-item/single-choice/s
 import { MultiChoiceComponent } from './questions/question-item/multi-choice/multi-choice.component';
 import { FillInComponent } from './questions/question-item/fill-in/fill-in.component';
 import { FormsModule } from '@angular/forms';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,6 @@ import { FormsModule } from '@angular/forms';
     ExamModusComponent,
     QuestionListComponent,
     QuestionItemComponent,
-    ScoreComponent,
     SingleModusComponent,
     MultiModusComponent,
     CheckResultComponent,
@@ -42,15 +41,19 @@ import { FormsModule } from '@angular/forms';
     MultiChoiceComponent,
     FillInComponent,
     
+
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(QuestionsDataService, {dataEncapsulation: false})
+    HttpClientInMemoryWebApiModule.forRoot(QuestionsDataService, {dataEncapsulation: false}),
+    NgbModule,
+    
   ],
-  providers: [],
+  providers: [NgbActiveModal],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

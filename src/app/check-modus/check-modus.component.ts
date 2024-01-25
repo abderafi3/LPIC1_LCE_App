@@ -59,43 +59,61 @@ constructor(private questionService: QuestionService,
       if(this.getQuestion()?.type !== 'multi'){
         if(solution && solution[0] === this.inputText){
           this.answerService.addCorrectAnswer(new Answer(this.questionId, userAsnwer))
+          this.router.navigate(['check-modus', ++this.questionId]);
+          this.getQuestion();
          } else {
           this.answerService.addWrongAnswer(new Answer(this.questionId, userAsnwer))
+          this.answerService.openPopup();  
+          if(this.questionId && this.questionId >= 2)
+          this.router.navigate(['check-modus', --this.questionId]);
+          this.getQuestion();
+         
+          
          }
         } else {
-      // Multi-Choice questions question.solution.includes(answer)
+      // Multi-Choice questions
       const equalsCheck = (solution : string[], userAsnwerMulti : string[]) =>
       solution.length === userAsnwerMulti.length &&
       solution.every((v, i) => v === userAsnwerMulti[i]);
      
       if(solution && equalsCheck(solution, this.userAsnwerMulti)){              //Correct answers
         this.answerService.addCorrectAnswer(new Answer(this.questionId, this.userAsnwerMulti))
+        this.router.navigate(['check-modus', ++this.questionId]);
+        this.getQuestion();
       } else{                                                                   //Incorrect answers
         this.answerService.addWrongAnswer(new Answer(this.questionId, this.userAsnwerMulti))
+        this.answerService.openPopup();
+        if(this.questionId && this.questionId >= 2)
+        this.router.navigate(['check-modus', --this.questionId]);
+        this.getQuestion();
+    
       }
       }
       //routing and rest
-         this.router.navigate(['check-modus', ++this.questionId]);
-         this.getQuestion();
+
          this.inputText = '';
          this.userAsnwerMulti = [];
     }
 
     onClickSkip(){
+      this.answerService.skippedQuestionCount++;
       this.router.navigate(['check-modus', ++this.questionId]);
       this.getQuestion();
     }
+
     
     onClickEnd(){
       this.router.navigate(['../check-result']);
     }
 
     test(){
-      console.log(this.answerService.correctAnswers.length)
+
+      this.answerService.openPopup();
+      // console.log(this.answerService.correctAnswers.length)
       console.log(this.answerService.wrongAnswers.length)
-      console.log('Correct answers')
-      this.answerService.getCorrectAnswers()
-      console.log('Incorrect answers')
+      // console.log('Correct answers')
+      // this.answerService.getCorrectAnswers()
+      // console.log('Incorrect answers')
       this.answerService.getWrongAnswers()
 
     }

@@ -2,16 +2,16 @@
 
     <div class="card mt-3 ">
         <div class="card-header">
-            <h6 class="card-title">Question: {{question.id}}</h6>
+            <h6 class="card-title d-flex justify-content-center">Question: {{question.id}}</h6>
             <h6 class="card-text">{{question.question}}</h6>
         </div>
 
         <ul class="list-group list-group-flush"  *ngFor="let answer of question.answers">
             <li *ngIf="question.type !== 'fillIn' && !showSolution" class="list-group-item">{{answer}}</li>
-            <li  [class.bg-success] = "question.solution.includes(answer) && i+1 === question.id"
-             class="list-group-item ">{{answer}}</li>
+            <!-- <li  [class.bg-success] = "question.solution.includes(answer) && i+1 === question.id"
+             class="list-group-item ">{{answer}}</li> -->
         </ul>
-        <div> <button type="button" class="btn btn-outline-success mt-3 mb-3"
+        <div class="d-flex justify-content-center"> <button type="button" class="btn btn-outline-success mt-3 mb-3"
         (click)="onClickSolution(i)" >Show Correct Answer</button></div>
     </div>
     
