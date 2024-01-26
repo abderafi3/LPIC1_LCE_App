@@ -15,8 +15,8 @@ export class CheckResultComponent implements OnInit {
   totalSkipped : number = 0;
 
   ngOnInit(): void {
-  this.totalCorrect = this.answer.correctAnswers.length;  
-  this.totalWrong = this.answer.wrongAnswers.length;  
+  this.totalCorrect = this.answer.getUniqueCorrectAnswers().length
+  this.totalWrong = this.answer.getUniqueWrongAnswers().length
   this.totalSkipped = this.answer.skippedQuestionCount;
   }
 
@@ -25,6 +25,7 @@ export class CheckResultComponent implements OnInit {
     this.answer.correctAnswers = [];  
     this.answer.wrongAnswers = [];  
     this.answer.skippedQuestionCount = 0;
+    this.answer.popUpCount = 7;
     this.router.navigate(['../check-modus/1']);
   }
 

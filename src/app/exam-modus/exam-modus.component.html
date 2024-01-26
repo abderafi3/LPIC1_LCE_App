@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="card mt-3" *ngIf="question">
         <div class="card-header">
             <h6 class="card-title d-flex justify-content-center">Question: {{question.id}}</h6>
@@ -41,7 +41,66 @@
         </div>
         <div class="col-1">
             <button type="button" class="btn btn-outline-danger mt-3 mb-3"
+            (click)="onTest()">Test</button>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-outline-danger mt-3 mb-3"
             (click)="onClickEnd()">End</button>
         </div>
     </div>
-</div>
+</div> -->
+
+
+
+
+<div class="container">
+    <div class="card mt-3" *ngIf="randomQuestion">
+        <div class="card-header">
+            <h6 class="card-title d-flex justify-content-center">Question: {{randomQuestion.id}}</h6>
+            <h6 class="card-text">{{randomQuestion.question}}</h6>
+        </div>
+    <ul class="list-group list-group-flush"  *ngFor="let answer of randomQuestion.answers">
+        <li *ngIf="randomQuestion.type == 'fillIn'"  class="list-group-item">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Answer:</span>
+                <input type="text" class="form-control" placeholder="Answer" aria-label="Answer">
+              </div>
+        </li>
+        <li *ngIf="randomQuestion.type == 'single'"  class="list-group-item">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    {{answer}}
+                </label>
+            </div>
+        </li>
+        <li *ngIf="randomQuestion.type == 'multi'"  class="list-group-item">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="">
+                <label class="form-check-label" for="flexCheckDefault">
+                    {{answer}}
+                </label>
+              </div>
+            
+        </li>
+    </ul>
+    
+    <div class="row justify-content-between">
+        <div class="col-2 ms-3"> 
+            <button type="button" class="btn btn-outline-primary mt-3 mb-3 "
+            [disabled]="question.id === 1" *ngIf="question"  (click)="onClickPrev()">Prev</button>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-outline-primary mt-3 mb-3"
+            [disabled]="question.id === 120" *ngIf="question" (click)="onClickNext()">Next</button>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-outline-danger mt-3 mb-3"
+            (click)="onTest()">Test</button>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-outline-danger mt-3 mb-3"
+            (click)="onClickEnd()">End</button>
+        </div>
+    </div>
+</div> 

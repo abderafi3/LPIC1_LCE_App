@@ -30,6 +30,7 @@ export class PopupContentComponent {
   onClickLearn(){
     this.router.navigate(['learn-modus/single-modus/1']);
     this.answerService.closePopup();
+    this.answerService.popUpCount = 7;
   }
 
 }
