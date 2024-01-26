@@ -4,7 +4,6 @@ import { Question } from '../questions/question';
 import { QuestionService } from '../questions/question.service';
 import { AnswerService } from '../answers/answer.service';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-exam-modus',
@@ -30,24 +29,13 @@ constructor(private questionService: QuestionService,
             ){}
  
     ngOnInit(): void {
+      this.route.params.subscribe((data : Params)=> {
+        this.questionId = data['id'];
+      } )
       this.getQuestions();
-       this.getQuestion();
-      //  this.getRandomQuestionService(this.randomQuestionId).subscribe((data : Params)=> {
-      //    this.randomQuestionId = data['id'];
-      //  } )
-       this.getRandomQuestion()
-
-    //   this.actualScore.subscribe(message => {
-    //     if (message !== this.myVar) {
-    //         this.myVar = message;
-    //         this.doSomething();
-    //     }
-    // });
-      
+      this.getQuestion();
     }
 
-
-    
     getQuestions() : void {
       this.questionService.getQuestions()
       .subscribe(questions => this.questions = questions);
@@ -60,12 +48,14 @@ constructor(private questionService: QuestionService,
       if(rnd.indexOf(r) === -1)
       rnd.push(r);
       }
+ 
         return rnd
             }
 
     getRandomQuestions()  {
       let x= this.getRandomquestionsId()
       const arr = this.questions?.filter((el, i) => x.some(j => i === j))
+      return arr
     }
 
     getQuestion() : void {
@@ -73,30 +63,31 @@ constructor(private questionService: QuestionService,
       .subscribe(question => this.question = question)
       
     }
-    getRandomQuestionService(id : number) : Observable<Question>{
-      return of(this.examRandomQuestion[id])
+    // getRandomQuestionService(id : number) : Observable<Question>{
+    //   return of(this.examRandomQuestion[id])
 
+    // }
+
+    getRandomQuestion(id : number): Question {
+        return this.getRandomQuestions()[0];
     }
 
-    getRandomQuestion(): void {
-        this.getRandomQuestionService(this.questionId)
-        .subscribe(question => this.question = question)
-        console.log(this.randomQuestion)
-        console.log(this.randomQuestionId)
-        console.log(this.randomValues)
-        console.log(this.examRandomQuestion)
+
+
+    onTest(){
+      console.log(this.getRandomquestionsId())
+      //console.log(this.getRandomQuestionService(0))
+      console.log(this.getRandomQuestions())
+      console.log(this. getRandomQuestion())
   
     }
+
+
 
     onClickPrev(){
       this.router.navigate(['exam-modus', --this.questionId]);
       this.getQuestion();
     }
-
-    onTest(){
-      return this.getRandomQuestions();
-    }
-    
     onClickNext(){
       this.router.navigate(['exam-modus', ++this.questionId]);
       this.getQuestion();

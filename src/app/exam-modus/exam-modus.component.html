@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
     <div class="card mt-3" *ngIf="question">
         <div class="card-header">
             <h6 class="card-title d-flex justify-content-center">Question: {{question.id}}</h6>
@@ -48,12 +48,16 @@
             (click)="onClickEnd()">End</button>
         </div>
     </div>
-</div> -->
+</div>
 
 
 
 
-<div class="container">
+<!-- <div class="container">
+    <div class="col-1">
+        <button type="button" class="btn btn-outline-danger mt-3 mb-3"
+        (click)="onTest()">Test</button>
+    </div>
     <div class="card mt-3" *ngIf="randomQuestion">
         <div class="card-header">
             <h6 class="card-title d-flex justify-content-center">Question: {{randomQuestion.id}}</h6>
@@ -94,13 +98,10 @@
             <button type="button" class="btn btn-outline-primary mt-3 mb-3"
             [disabled]="question.id === 120" *ngIf="question" (click)="onClickNext()">Next</button>
         </div>
-        <div class="col-1">
-            <button type="button" class="btn btn-outline-danger mt-3 mb-3"
-            (click)="onTest()">Test</button>
-        </div>
+ 
         <div class="col-1">
             <button type="button" class="btn btn-outline-danger mt-3 mb-3"
             (click)="onClickEnd()">End</button>
         </div>
     </div>
-</div> 
+</div>  -->
