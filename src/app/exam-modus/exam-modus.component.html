@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card mt-3" *ngIf="question">
         <div class="card-header">
-            <h6 class="card-title d-flex justify-content-center">Question: {{question.id}}</h6>
+            <h6 class="card-title d-flex justify-content-center">Question: {{questionId}} of {{examRandomQuestion.length}}</h6>
             <h6 class="card-text">{{question.question}}</h6>
         </div>
     <ul class="list-group list-group-flush"  *ngFor="let answer of question.answers">
@@ -33,11 +33,11 @@
     <div class="row justify-content-between">
         <div class="col-2 ms-3"> 
             <button type="button" class="btn btn-outline-primary mt-3 mb-3 "
-            [disabled]="question.id === 1" *ngIf="question"  (click)="onClickPrev()">Prev</button>
+            [disabled]="questionId === 1" *ngIf="question"  (click)="onClickPrev()">Prev</button>
         </div>
         <div class="col-2">
             <button type="button" class="btn btn-outline-primary mt-3 mb-3"
-            [disabled]="question.id === 120" *ngIf="question" (click)="onClickNext()">Next</button>
+            [disabled]="questionId === 60" *ngIf="question" (click)="onClickNext()">Next</button>
         </div>
         <div class="col-1">
             <button type="button" class="btn btn-outline-danger mt-3 mb-3"

@@ -17,80 +17,49 @@ export class ExamModusComponent {
   randomValues : number[] = [];
   question : Question | undefined;
   randomQuestion : Question | undefined;
-  questionId : number = 1;
+  questionId : number = 0;
   randomQuestionId : number = 0;
   actualScore : number = 1;
   examCancelEvnt : number = 0.2;
 
 constructor(private questionService: QuestionService,
             private answerService : AnswerService,
-            private route : ActivatedRoute,
             private router : Router,
-            ){}
+            ){
+              this.questionId = questionService.questionId;
+            }
  
     ngOnInit(): void {
-      this.route.params.subscribe((data : Params)=> {
-        this.questionId = data['id'];
-      } )
-      this.getQuestions();
-      this.getQuestion();
+      this.examRandomQuestion = this.getRandomQuestionList();
+      this.question = this.questionService.getRandomQuestion(this.questionId);
+     
     }
 
-    getQuestions() : void {
-      this.questionService.getQuestions()
-      .subscribe(questions => this.questions = questions);
-    }
-    
-    getRandomquestionsId(){
-      let rnd : number [] = [];
-      while(rnd.length < 60){
-      var r = Math.floor(Math.random() * 120) + 1;
-      if(rnd.indexOf(r) === -1)
-      rnd.push(r);
-      }
- 
-        return rnd
-            }
-
-    getRandomQuestions()  {
-      let x= this.getRandomquestionsId()
-      const arr = this.questions?.filter((el, i) => x.some(j => i === j))
-      return arr
+    getRandomQuestion(){
+        this.question = this.questionService.getRndQst();
     }
 
-    getQuestion() : void {
-      this.questionService.getQuestion(this.questionId)
-      .subscribe(question => this.question = question)
-      
+    getRandomQuestionList(){
+      return this.examRandomQuestion = this.questionService.examRandomQuestion;
     }
-    // getRandomQuestionService(id : number) : Observable<Question>{
-    //   return of(this.examRandomQuestion[id])
-
-    // }
-
-    getRandomQuestion(id : number): Question {
-        return this.getRandomQuestions()[0];
-    }
-
-
 
     onTest(){
-      console.log(this.getRandomquestionsId())
-      //console.log(this.getRandomQuestionService(0))
-      console.log(this.getRandomQuestions())
-      console.log(this. getRandomQuestion())
+      // console.log(this.getRandomquestionsId())
+      // console.log(this.getRandomQuestions())
+      //console.log(this. getRandomQuestion())
   
     }
 
 
 
     onClickPrev(){
-      this.router.navigate(['exam-modus', --this.questionId]);
-      this.getQuestion();
+     //this.router.navigate(['exam-modus', --this.questionId])
+      this.question = this.questionService.getRandomQuestion(--this.questionId)
     }
     onClickNext(){
-      this.router.navigate(['exam-modus', ++this.questionId]);
-      this.getQuestion();
+      //this.router.navigate(['exam-modus', ++this.questionId]);
+      this.question =this.questionService.getRandomQuestion(++this.questionId)
+
     }
 
     getActualScore(){

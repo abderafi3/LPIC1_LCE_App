@@ -20,7 +20,7 @@ const routes: Routes = [
   ]},
   {path: 'check-modus/:id', component: CheckModusComponent},
   {path: 'check-result', component: CheckResultComponent},
-  {path: 'exam-modus/:id', component: ExamModusComponent},
+  {path: 'exam-modus', component: ExamModusComponent},
   {path: 'exam-result', component: ExamResultComponent}
 
 ];
