@@ -28,7 +28,7 @@ export class ExamResultComponent implements OnInit {
     this.answer.correctAnswers = [];  
     this.answer.wrongAnswers = [];  
     this.answer.skippedQuestionCount = 0;
-    this.router.navigate(['../exam-modus/1']);
+    this.router.navigate(['../exam-modus']);
   }
 
 }
