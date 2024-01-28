@@ -12,7 +12,7 @@ import { QuestionService } from 'src/app/questions/question.service';
 export class SingleModusComponent implements OnInit {
 question : Question | undefined;
 questionId : number = 1;
-showSolution : boolean = false;
+answersVisibility: boolean[] = [];
 constructor(private route : ActivatedRoute, private router : Router,
   private questionService: QuestionService){}
 
@@ -31,17 +31,16 @@ constructor(private route : ActivatedRoute, private router : Router,
   onClickNext(){
     this.router.navigate(['learn-modus/single-modus', ++this.questionId]);
     this.getQuestion();
-    this.showSolution = false;
   }
 
   onClickPrev(){
     this.router.navigate(['learn-modus/single-modus', --this.questionId]);
     this.getQuestion();
-    this.showSolution = false;
   }
 
-  onClickSolution(){
-    this.showSolution = true;
+
+  toggleAnswer(index: number): void {
+    this.answersVisibility[index] = !this.answersVisibility[index];
   }
 
 }

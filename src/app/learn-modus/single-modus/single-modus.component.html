@@ -3,15 +3,20 @@
         <h6 class="card-title d-flex justify-content-center" >Question: {{question.id}}</h6>
         <h6 class="card-text">{{question.question}}</h6>
     </div>
-    <ul class="list-group list-group-flush"  *ngFor="let answer of question.answers">
-        <li *ngIf="question.type !== 'fillIn' && !showSolution" class="list-group-item">{{answer}}</li>
-        <li *ngIf="showSolution"  [class.bg-success] = "question.solution.includes(answer)"
-         class="list-group-item ">{{answer}}</li>
-    </ul>
-    <div class="d-flex justify-content-center"> <button type="button" class="btn btn-outline-success mt-3 mb-3"
-        (click)="onClickSolution()">Show Correct Answer</button></div>
-</div>
 
+    <ul class="list-group list-group-flush"  *ngFor="let answer of question.answers">
+        <li *ngIf="question.type !== 'fillIn' && !answersVisibility[question.id-1]" class="list-group-item">{{answer}}</li>
+        <li *ngIf="answersVisibility[question.id-1]"  [class.show] = "question.solution.includes(answer)"
+        class="list-group-item ">{{answer}}</li>
+    </ul>
+
+
+
+<div *ngIf="!answersVisibility[question.id-1]" class="d-flex justify-content-center"> <button type="button" class="btn btn-outline-success mt-3 mb-3"
+    (click)="toggleAnswer(question.id-1)" >Show Correct Answer</button></div>
+<div *ngIf="answersVisibility[question.id-1]" class="d-flex justify-content-center"> <button type="button" class="btn btn-outline-danger mt-3 mb-3"
+        (click)="toggleAnswer(question.id-1)" >Hide Correct Answer</button></div>
+</div>
 <div class="row d-flex justify-content-between mt-3">
 <div class="col d-flex justify-content-start">
     <button type="button" class="btn btn-outline-secondary"

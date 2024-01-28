@@ -11,8 +11,7 @@ import { QuestionService } from 'src/app/questions/question.service';
 export class MultiModusComponent implements OnInit{
 questions : Question[] = [];
 questionId : number = 1;
-showSolution : boolean = false;
-isClicked : boolean = false;
+answersVisibility: boolean[] = [];
 
 constructor(private questionService: QuestionService){}
 
@@ -25,9 +24,8 @@ getQuestions() : void {
   .subscribe(questions => this.questions = questions);
 }
 
-onClickSolution(i : number){
-  if (this.questionId == i+1) {
-
-  }
+toggleAnswer(index: number): void {
+  this.answersVisibility[index] = !this.answersVisibility[index];
 }
+
 }

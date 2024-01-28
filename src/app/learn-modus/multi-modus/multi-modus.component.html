@@ -5,14 +5,18 @@
             <h6 class="card-title d-flex justify-content-center">Question: {{question.id}}</h6>
             <h6 class="card-text">{{question.question}}</h6>
         </div>
+            <ul class="list-group list-group-flush"  *ngFor="let answer of question.answers">
+                <li *ngIf="question.type !== 'fillIn' && !answersVisibility[i]" class="list-group-item">{{answer}}</li>
+                <li *ngIf="answersVisibility[i]"  [class.show] = "question.solution.includes(answer)"
+                class="list-group-item ">{{answer}}</li>
+            </ul>
 
-        <ul class="list-group list-group-flush"  *ngFor="let answer of question.answers">
-            <li *ngIf="question.type !== 'fillIn' && !showSolution" class="list-group-item">{{answer}}</li>
-            <!-- <li  [class.bg-success] = "question.solution.includes(answer) && i+1 === question.id"
-             class="list-group-item ">{{answer}}</li> -->
-        </ul>
-        <div class="d-flex justify-content-center"> <button type="button" class="btn btn-outline-success mt-3 mb-3"
-        (click)="onClickSolution(i)" >Show Correct Answer</button></div>
+
+
+        <div *ngIf="!answersVisibility[i]" class="d-flex justify-content-center"> <button type="button" class="btn btn-outline-success mt-3 mb-3"
+            (click)="toggleAnswer(i)" >Show Correct Answer</button></div>
+        <div *ngIf="answersVisibility[i]" class="d-flex justify-content-center"> <button type="button" class="btn btn-outline-danger mt-3 mb-3"
+                (click)="toggleAnswer(i)" >Hide Correct Answer</button></div>
     </div>
     
 </div>
