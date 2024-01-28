@@ -19,6 +19,7 @@ export class AnswerService {
   questionId: number | undefined ;
   uniqueWrongAnswers : Answer[] = [];
   uniqueCorrectAnswers : Answer[] = [];
+  //correctPercentage : number;
 
   constructor(
     private modalService: NgbModal,
@@ -51,6 +52,12 @@ export class AnswerService {
 
   getUniqueCorrectAnswers(){
     return this.uniqueCorrectAnswers = [...new Map(this.wrongAnswers.map(v => [v.questionId, v])).values()];
+  }
+
+  calculateScore(): number {
+    const totalQuestions = this.correctAnswers.length + this.wrongAnswers.length;
+    const correctPercentage = (this.correctAnswers.length / totalQuestions) * 100;
+    return correctPercentage;
   }
 
   openPopup() {

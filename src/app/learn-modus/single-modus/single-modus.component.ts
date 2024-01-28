@@ -11,6 +11,7 @@ import { QuestionService } from 'src/app/questions/question.service';
 })
 export class SingleModusComponent implements OnInit {
 question : Question | undefined;
+questions = 120;
 questionId : number = 1;
 answersVisibility: boolean[] = [];
 constructor(private route : ActivatedRoute, private router : Router,

@@ -2,7 +2,7 @@
 
     <div class="card mt-3 ">
         <div class="card-header">
-            <h6 class="card-title d-flex justify-content-center">Question: {{question.id}}</h6>
+            <h6 class="card-title d-flex justify-content-center">Question: {{question.id}} of {{questions.length}}</h6>
             <h6 class="card-text">{{question.question}}</h6>
         </div>
             <ul class="list-group list-group-flush"  *ngFor="let answer of question.answers">
