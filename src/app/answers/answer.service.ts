@@ -12,6 +12,8 @@ export class AnswerService {
 
   correctAnswers : Answer[] = [];
   wrongAnswers : Answer[] = [];
+  combinedAnswers: Answer [] = [];
+
   skippedQuestionCount : number = 0;
   popUpCount : number = 7;
   modalRef : any;
@@ -52,6 +54,14 @@ export class AnswerService {
 
   getUniqueCorrectAnswers(){
     return this.uniqueCorrectAnswers = [...new Map(this.wrongAnswers.map(v => [v.questionId, v])).values()];
+  }
+
+  getExamSolution() : Answer[] {
+    this.combinedAnswers = [...this.correctAnswers.map(answer => ({ ...answer, isCorrect: true, answer:answer.question?.solution })),
+      ...this.wrongAnswers.map(answer => ({ ...answer, correct: false, answer: answer.answers }))];
+      this.combinedAnswers.sort((a, b) => a.questionId - b.questionId);
+      console.log(this.combinedAnswers)
+      return this.combinedAnswers
   }
 
   calculateScore(): number {

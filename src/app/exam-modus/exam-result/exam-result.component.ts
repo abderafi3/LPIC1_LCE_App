@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Answer } from 'src/app/answers/answer';
 import { AnswerService } from 'src/app/answers/answer.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AnswerService } from 'src/app/answers/answer.service';
 export class ExamResultComponent implements OnInit {
 
   constructor(private answerService: AnswerService, private router : Router){}
-
+  combinedAnswers : Answer[] = this.answerService.combinedAnswers;
   totalCorrect : number = 0;
   totalWrong : number = 0;
   totalNotAnswred : number = 0;

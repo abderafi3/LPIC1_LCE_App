@@ -26,3 +26,9 @@
         </div>
     </div>
 </div>
+<div *ngFor="let answer of combinedAnswers">
+    <p [ngClass]="{'correct': answer.isCorrect, 'wrong': !answer.isCorrect}">
+      {{ answer.question?.question }}: {{ answer.answers }} (Solution: {{ answer.question?.solution }})
+    </p>
+  </div>
+  

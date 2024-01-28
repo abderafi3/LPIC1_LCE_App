@@ -101,14 +101,16 @@ console.log(this.answerService.calculateScore())
     }
 
     onTest(){
-
+     this.answerService.getExamSolution()
   
     }
 
 
     isScoreLow(){
       const score = this.answerService.calculateScore();
-      if(score > 0 && score < 20){
+      const totalQuestions = this.answerService.getExamSolution().length;
+      console.log(totalQuestions)
+      if((score > 0 && score < 20)|| (score === 0 && totalQuestions > (0.2*60))){
         return true;
       }else{ 
         return false;
