@@ -8,14 +8,5 @@ import { QuestionService } from '../questions/question.service';
 })
 export class HeaderComponent {
 
-  constructor(private questionService : QuestionService){}
 
-  onExamStart(){
-    this.questionService.getRandomQuestion(this.questionService.questionId);
-   //console.log(this.questionService.getRndQst());
-        // this.questionService.getRandomquestionsId();
-    // this.questionService.getRandomquestionsId();
-    // console.log(this.questionService.getRandomquestionsId())
-    // console.log(this.questionService.getRandomQuestions())
-  }
 }

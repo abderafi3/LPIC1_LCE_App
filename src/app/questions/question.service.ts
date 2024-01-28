@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Question } from './question';
 
 @Injectable({
@@ -8,14 +8,6 @@ import { Question } from './question';
 })
 export class QuestionService {
 
-  questions : Question [] = [];
-  examRandomQuestion : Question [] = [];
-  randomValues : number[] = [];
-  question : Question | undefined;
-  randomQuestionIds : Question[]=[];
-  randomQuestion : Question | undefined;
-  questionId : number = 1;
-  randomQuestionId : number = 0;
   actualScore : number = 1;
   examCancelEvnt : number = 0.2;
 
@@ -34,46 +26,32 @@ export class QuestionService {
     return this.http.get<Question>(url);
   }
 
-  getQuestionsList() : Question[] {
-   this.getQuestions()
-    .subscribe(questions => this.questions = questions as Question[]);
-    return this.questions
+  getRandomQuestions(): Observable<Question[]> {
+    return this.http.get<Question[]>(this.questionsUrl).pipe(
+      map(questions => this.SelectRandomQuestions(questions, 60))
+    );
   }
 
-
-  getRandomquestionsId(){
-    let rnd : number [] = [];
-    while(rnd.length < 60){
-    let r = Math.floor(Math.random() * 120) + 1;
-    if(rnd.indexOf(r) === -1)
-    rnd.push(r);
+  private SelectRandomQuestions(questions: Question[], count: number): Question[] {
+    if (questions.length <= count) {
+      return questions;
+    } else {
+      const selectedQuestions : Question[] = [];
+      const indices = new Set<number>();
+      while (indices.size < count) {
+        const randomIndex = Math.floor(Math.random() * questions.length);
+        if (!indices.has(randomIndex)) {
+          indices.add(randomIndex);
+          selectedQuestions.push(questions[randomIndex]);
+        }
+      }
+      return selectedQuestions;
     }
-console.log(rnd.sort())
-      return rnd.sort()
-          }
-
-
-  getRandomQuestions()  {
-    let questionId= this.getRandomquestionsId()
-    let questionList = this.getQuestionsList()
-    this.examRandomQuestion = questionId.map(index => questionList[index]);
-    console.log(this.examRandomQuestion);
-    return this.examRandomQuestion
-
- 
   }
-
-  
-  getRandomQuestion(id : number ): Question {
-    return this.getRandomQuestions()[id];
-  }
-
-  getRndQst() : Question {
-
-    return this.getRandomQuestion(this.questionId-1);
-  }
-
-
-
 
 }
+
+
+
+
+
