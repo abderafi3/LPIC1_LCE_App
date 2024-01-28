@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { Answer } from './answer';
 import {  NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupContentComponent } from '../check-modus/popup-content/popup-content.component';
+import { ExamPopupComponent } from '../exam-modus/exam-popup/exam-popup.component';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnswerService {
-
-  //answers : Answer[] | undefined;
 
   correctAnswers : Answer[] = [];
   wrongAnswers : Answer[] = [];
@@ -19,7 +18,8 @@ export class AnswerService {
   questionId: number | undefined ;
   uniqueWrongAnswers : Answer[] = [];
   uniqueCorrectAnswers : Answer[] = [];
-  //correctPercentage : number;
+  score : number = 0;
+
 
   constructor(
     private modalService: NgbModal,
@@ -56,12 +56,17 @@ export class AnswerService {
 
   calculateScore(): number {
     const totalQuestions = this.correctAnswers.length + this.wrongAnswers.length;
-    const correctPercentage = (this.correctAnswers.length / totalQuestions) * 100;
-    return correctPercentage;
+    this.score = (this.correctAnswers.length / totalQuestions) * 100;
+    return this.score;
   }
 
   openPopup() {
     this.modalRef = this.modalService.open(PopupContentComponent);
+    
+  }
+
+  openExamPopup() {
+    this.modalRef = this.modalService.open(ExamPopupComponent);
     
   }
 
@@ -70,8 +75,16 @@ export class AnswerService {
     this.modalRef.close();
   }
 
-  // addAnswer(id : number, answer: string[]){
-  //   this.answers?.push(new Answer(id, answer));
-  //   }
+  scoreReset(){
+    this.correctAnswers = [];
+    this.wrongAnswers = [];
+    this.popUpCount  = 7;
+    this.skippedQuestionCount  = 0;
+    this.uniqueWrongAnswers = [];
+    this.uniqueCorrectAnswers  = [];
+    this.score = 0;
+  }
+
+
 }
 

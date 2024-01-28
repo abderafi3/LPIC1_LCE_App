@@ -27,6 +27,7 @@ constructor(private questionService: QuestionService,
             ){}
  
     ngOnInit(): void {
+      this.answerService.scoreReset();
       this.questionService.getRandomQuestions().subscribe(questions => {
         this.questions = questions;
         this.question = this.questions[0]; 
@@ -57,6 +58,7 @@ constructor(private questionService: QuestionService,
         let solution = this.question.solution.sort();
         let userAsnwer : string[] = [];
         userAsnwer.push(this.inputText);
+
         // Fill-in questions && single-choice questions
         if(this.question.type !== 'multi'){
                 if(solution[0] === this.inputText){
@@ -82,7 +84,7 @@ constructor(private questionService: QuestionService,
                   this.answerService.addCorrectAnswer(new Answer(this.questionId, this.userAsnwerMulti, this.question))
                   this.question = this.questions[++this.questionId]
                 } else{    
-                  console.log('-multi : wron')                                                               //Incorrect answers
+                  console.log('-multi : wrong')                                                               //Incorrect answers
                   this.answerService.addWrongAnswer(new Answer(this.questionId, this.userAsnwerMulti, this.question))
                   this.question = this.questions[++this.questionId]
                 }
@@ -90,7 +92,11 @@ constructor(private questionService: QuestionService,
            this.inputText = '';           //rest
            this.userAsnwerMulti = [];
           }
-
+          if(this.isScoreLow()){
+            this.answerService.openExamPopup();
+            this.onClickEnd();
+          }
+console.log(this.answerService.calculateScore())
 
     }
 
@@ -100,6 +106,14 @@ constructor(private questionService: QuestionService,
     }
 
 
+    isScoreLow(){
+      const score = this.answerService.calculateScore();
+      if(score > 0 && score < 20){
+        return true;
+      }else{ 
+        return false;
+      }
+    }
 
    
 

@@ -9,25 +9,22 @@ import { AnswerService } from 'src/app/answers/answer.service';
 })
 export class ExamResultComponent implements OnInit {
 
-  constructor(private answer: AnswerService, private router : Router){}
+  constructor(private answerService: AnswerService, private router : Router){}
 
   totalCorrect : number = 0;
   totalWrong : number = 0;
   totalNotAnswred : number = 0;
 
   ngOnInit(): void {
-  this.totalCorrect = this.answer.correctAnswers.length;  
-  this.totalWrong = this.answer.wrongAnswers.length;  
-  this.totalNotAnswred = this.answer.wrongAnswers.filter(x => {
-    x.answers.length == 0;
-  }).length;
+  this.totalCorrect = this.answerService.correctAnswers.length;  
+  this.totalWrong = this.answerService.wrongAnswers.length;  
+  console.log(this.answerService.wrongAnswers)
+  this.totalNotAnswred = this.answerService.wrongAnswers.filter(obj => obj.answers[0] === '' || obj.answers.length === 0).length;
   }
 
 
   onRestart(){
-    this.answer.correctAnswers = [];  
-    this.answer.wrongAnswers = [];  
-    this.answer.skippedQuestionCount = 0;
+    this.answerService.scoreReset();
     this.router.navigate(['../exam-modus']);
   }
 

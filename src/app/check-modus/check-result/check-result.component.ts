@@ -8,24 +8,21 @@ import { AnswerService } from 'src/app/answers/answer.service';
   styleUrls: ['./check-result.component.css']
 })
 export class CheckResultComponent implements OnInit {
-  constructor(private answer: AnswerService, private router : Router){}
+  constructor(private answerService: AnswerService, private router : Router){}
 
   totalCorrect : number = 0;
   totalWrong : number = 0;
   totalSkipped : number = 0;
 
   ngOnInit(): void {
-  this.totalCorrect = this.answer.getUniqueCorrectAnswers().length
-  this.totalWrong = this.answer.getUniqueWrongAnswers().length
-  this.totalSkipped = this.answer.skippedQuestionCount;
+  this.totalCorrect = this.answerService.getUniqueCorrectAnswers().length
+  this.totalWrong = this.answerService.getUniqueWrongAnswers().length
+  this.totalSkipped = this.answerService.skippedQuestionCount;
   }
 
 
   onRestart(){
-    this.answer.correctAnswers = [];  
-    this.answer.wrongAnswers = [];  
-    this.answer.skippedQuestionCount = 0;
-    this.answer.popUpCount = 7;
+    this.answerService.scoreReset();
     this.router.navigate(['../check-modus/1']);
   }
 

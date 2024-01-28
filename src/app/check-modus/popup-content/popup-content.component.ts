@@ -21,7 +21,6 @@ export class PopupContentComponent {
     return this.count
   }
 
-  
 
   onClickClose(){
     this.answerService.closePopup();   

@@ -1,0 +1,19 @@
+<div>
+    <div  class="modal-header">
+      <h5 class="modal-title">Low Score!</h5>
+      <button type="button" class="btn-close"
+      (click)="onClickClose()" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    
+    <div class="modal-body">
+      <p>Too many wrong answers!</p>
+      <p>Youre Score is below the 20%</p>
+      <p>Youre Score is : {{score}}%</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary"
+      (click)="onClickClose()" data-bs-dismiss="modal">Dismiss</button>
+      <button type="button" class="btn btn-primary"
+      (click)="onClickLearn()">Learn Modus</button>
+    </div>
+  </div>

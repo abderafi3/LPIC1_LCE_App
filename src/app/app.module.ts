@@ -22,6 +22,7 @@ import { MultiChoiceComponent } from './questions/question-item/multi-choice/mul
 import { FillInComponent } from './questions/question-item/fill-in/fill-in.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ExamPopupComponent } from './exam-modus/exam-popup/exam-popup.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     SingleChoiceComponent,
     MultiChoiceComponent,
     FillInComponent,
+    ExamPopupComponent,
     
 
     

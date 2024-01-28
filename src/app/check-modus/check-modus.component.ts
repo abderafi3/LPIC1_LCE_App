@@ -24,6 +24,7 @@ constructor(private questionService: QuestionService,
     private answerService: AnswerService){}
  
     ngOnInit(): void {
+      this.answerService.scoreReset();
       this.route.params.subscribe((data : Params)=> {
         this.questionId = data['id'];
       } )
@@ -115,14 +116,7 @@ constructor(private questionService: QuestionService,
     }
 
     test(){
-      // console.log(this.answerService.correctAnswers.length)
-      console.log(this.answerService.wrongAnswers.length)
-      console.log(this.answerService.uniqueWrongAnswers.length)
-      // console.log('Correct answers')
-      // this.answerService.getCorrectAnswers()
-      // console.log('Incorrect answers')
-      this.answerService.getWrongAnswers()
-      this.answerService.getUniqueWrongAnswers()
+
 
     }
 
