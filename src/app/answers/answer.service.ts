@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Injectable } from '@angular/core';
 import { Answer } from './answer';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -36,9 +37,7 @@ export class AnswerService {
   }
 
   getCorrectAnswers() {
-    this.correctAnswers.forEach((item) => {
-      console.log(item);
-    });
+    this.correctAnswers.forEach((item) => {});
   }
 
   getWrongAnswers(): Answer[] {
