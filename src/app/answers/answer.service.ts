@@ -3,6 +3,7 @@ import { Answer } from './answer';
 import {  NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupContentComponent } from '../check-modus/popup-content/popup-content.component';
 import { ExamPopupComponent } from '../exam-modus/exam-popup/exam-popup.component';
+import { QuestionService } from '../questions/question.service';
 
 
 @Injectable({
@@ -13,6 +14,7 @@ export class AnswerService {
   correctAnswers : Answer[] = [];
   wrongAnswers : Answer[] = [];
   combinedAnswers: Answer [] = [];
+  answersVisibility: boolean[] = [];
 
   skippedQuestionCount : number = 0;
   popUpCount : number = 7;
@@ -25,6 +27,7 @@ export class AnswerService {
 
   constructor(
     private modalService: NgbModal,
+    private questionService : QuestionService,
     ) { }
 
   addCorrectAnswer(answer : Answer){
@@ -65,8 +68,8 @@ export class AnswerService {
   }
 
   calculateScore(): number {
-    const totalQuestions = this.correctAnswers.length + this.wrongAnswers.length;
-    this.score = (this.correctAnswers.length / totalQuestions) * 100;
+    const totalQuestions = this.questionService.examQuestionnumbers;
+    this.score =(1 - (this.wrongAnswers.length / totalQuestions)) * 100;
     return this.score;
   }
 
@@ -83,6 +86,10 @@ export class AnswerService {
   closePopup() { 
  
     this.modalRef.close();
+  }
+
+  showAnswer(index: number): void {
+    this.answersVisibility[index] = !this.answersVisibility[index];
   }
 
   scoreReset(){

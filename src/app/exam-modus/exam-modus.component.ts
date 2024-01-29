@@ -108,22 +108,21 @@ console.log(this.answerService.calculateScore())
 
     isScoreLow(){
       const score = this.answerService.calculateScore();
-      const totalQuestions = this.answerService.getExamSolution().length;
-      console.log(totalQuestions)
-      if((score > 0 && score < 20)|| (score === 0 && totalQuestions > (0.2*60))){
+      if((score < 80)){
         return true;
       }else{ 
         return false;
       }
     }
 
-   
+
 
     getActualScore(){
       
     }
 
     onClickEnd(){
+      this.answerService.getExamSolution();
       this.router.navigate(['../exam-result']);
     }
 }

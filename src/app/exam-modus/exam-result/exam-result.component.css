@@ -1,11 +1,15 @@
+ul {
+    list-style-type: none;
+  }
+  
 .correct{
     background-color: #00b539;
     color: white;
     }
 
 .wrong{
-    background-color: #c50c0c;
-    color: white;
+    border-color: #C70039;
+    color: black;
     }
 
 .counter{

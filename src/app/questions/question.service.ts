@@ -8,12 +8,10 @@ import { Question } from './question';
 })
 export class QuestionService {
 
-  actualScore : number = 1;
-  examCancelEvnt : number = 0.2;
-
   private questionsUrl = 'api/questions';
 
   httpOptions = {headers : new HttpHeaders({'content-type': 'application/json'})};
+  examQuestionnumbers : number = 60;
 
   constructor(private http: HttpClient) { }
   getQuestions() : Observable<Question[]>
@@ -28,7 +26,7 @@ export class QuestionService {
 
   getRandomQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(this.questionsUrl).pipe(
-      map(questions => this.SelectRandomQuestions(questions, 60))
+      map(questions => this.SelectRandomQuestions(questions, this.examQuestionnumbers))
     );
   }
 

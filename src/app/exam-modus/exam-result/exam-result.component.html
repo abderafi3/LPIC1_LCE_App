@@ -1,5 +1,4 @@
-<div class="container">
-    <div class="container ">
+<div class="container mb-5 ">
         <div class="row d-flex justify-content-center">
             <div class="col-md-3 col-sm-6">
                 <div class="counter green">
@@ -24,11 +23,29 @@
             <button type="button" class="btn btn-outline-danger mt-3 mb-3"
             (click)="onRestart()">Restart</button>
         </div>
-    </div>
-</div>
-<div *ngFor="let answer of combinedAnswers">
+            <div class="card mt-3 " *ngFor="let item of combinedAnswers; let i = index">
+                <div class="card-header">
+                    <h6 class="card-title d-flex justify-content-center">Question: {{item.questionId + 1}} of {{combinedAnswers.length}}</h6>
+                    <h6 class="card-text">{{item.question?.question}}</h6>
+                </div>
+                    <ul  class="list-group list-group-flush"  *ngFor="let answer of item.question?.answers">
+                        <li *ngIf="item.question && item.isCorrect"  [class.correct] = "item.question.solution.includes(answer)"
+                        class="list-group-item ">{{answer}}</li>
+                        <div *ngIf="item.question && !item.isCorrect">
+                            <li [ngClass]="{'correct': item.question.solution.includes(answer), 'wrong': item.answers.includes(answer)}"
+                             class="list-group-item ">{{answer}}</li>
+                        </div>
+                    </ul>
+            
+            </div>
+        </div>
+  
+
+
+<!-- <div *ngFor="let answer of combinedAnswers">
     <p [ngClass]="{'correct': answer.isCorrect, 'wrong': !answer.isCorrect}">
       {{ answer.question?.question }}: {{ answer.answers }} (Solution: {{ answer.question?.solution }})
     </p>
-  </div>
-  
+</div> -->
+
+
