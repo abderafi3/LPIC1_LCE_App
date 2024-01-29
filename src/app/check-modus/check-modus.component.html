@@ -71,19 +71,10 @@
           Sumbit
         </button>
       </div>
-      <div class="col-2">
-        <button
-          type="button"
-          class="btn btn-outline-success mt-3 mb-3"
-          (click)="test()"
-        >
-          test
-        </button>
-      </div>
       <div class="col-1">
         <button
           type="button"
-          class="btn btn-outline-warning mt-3 mb-3"
+          class="btn btn-outline-info mt-3 mb-3"
           [disabled]="question.id === 120"
           *ngIf="question"
           (click)="onClickSkip()"

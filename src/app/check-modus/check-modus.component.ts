@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
@@ -127,6 +128,4 @@ export class CheckModusComponent implements OnInit {
   onClickEnd() {
     this.router.navigate(['../check-result']);
   }
-
-  test() {}
 }

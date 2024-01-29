@@ -37,11 +37,12 @@ export class AnswerService {
   }
 
   getCorrectAnswers() {
-    this.correctAnswers.forEach((item) => {});
+    console.log(this.correctAnswers);
+    return this.correctAnswers;
   }
 
   getWrongAnswers(): Answer[] {
-    this.wrongAnswers.forEach((item) => {});
+    console.log(this.wrongAnswers);
     return this.wrongAnswers;
   }
 
@@ -53,7 +54,7 @@ export class AnswerService {
 
   getUniqueCorrectAnswers() {
     return (this.uniqueCorrectAnswers = [
-      ...new Map(this.wrongAnswers.map((v) => [v.questionId, v])).values(),
+      ...new Map(this.correctAnswers.map((v) => [v.questionId, v])).values(),
     ]);
   }
 
