@@ -23,8 +23,8 @@
             <button type="button" class="btn btn-outline-danger mt-3 mb-3"
             (click)="onRestart()">Restart</button>
         </div>
-            <div class="card mt-3 " *ngFor="let item of combinedAnswers; let i = index">
-                <div class="card-header">
+            <div class="card mt-3 " *ngFor="let item of combinedAnswers">
+                <div class="card-header" [ngClass]="{'correctAnswer': item.isCorrect , 'wrongAnswer': !item.isCorrect}">
                     <h6 class="card-title d-flex justify-content-center">Question: {{item.questionId + 1}} of {{combinedAnswers.length}}</h6>
                     <h6 class="card-text">{{item.question?.question}}</h6>
                 </div>
@@ -39,13 +39,3 @@
             
             </div>
         </div>
-  
-
-
-<!-- <div *ngFor="let answer of combinedAnswers">
-    <p [ngClass]="{'correct': answer.isCorrect, 'wrong': !answer.isCorrect}">
-      {{ answer.question?.question }}: {{ answer.answers }} (Solution: {{ answer.question?.solution }})
-    </p>
-</div> -->
-
-

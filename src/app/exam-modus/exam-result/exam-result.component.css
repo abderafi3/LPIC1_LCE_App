@@ -2,16 +2,25 @@ ul {
     list-style-type: none;
   }
   
-.correct{
-    background-color: #00b539;
-    color: white;
-    }
+
+.wrongAnswer{
+    color: red;
+    font-weight:200;
+}
+.correctAnswer{
+    color: green;
+    font-weight:200;
+}
 
 .wrong{
     border-color: #C70039;
     color: black;
     }
 
+.correct{
+        background-color: #00b539;
+        color: white;
+}
 .counter{
     color: #fff;
     background: linear-gradient(to right bottom, #FFD81B, #f9b12a);
