@@ -8,9 +8,8 @@ describe('SingleModusComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SingleModusComponent ]
-    })
-    .compileComponents();
+      declarations: [SingleModusComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SingleModusComponent);
     component = fixture.componentInstance;

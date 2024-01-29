@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { QuestionsDataService } from './questions/questions-data.service';
 
@@ -42,20 +42,18 @@ import { ExamPopupComponent } from './exam-modus/exam-popup/exam-popup.component
     MultiChoiceComponent,
     FillInComponent,
     ExamPopupComponent,
-    
-
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(QuestionsDataService, {dataEncapsulation: false}),
+    HttpClientInMemoryWebApiModule.forRoot(QuestionsDataService, {
+      dataEncapsulation: false,
+    }),
     NgbModule,
-    
   ],
   providers: [NgbActiveModal],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,7 +1,7 @@
 export class FileReaderComponent {
   questions: any[] = [];
 
-  constructor() { }
+  constructor() {}
 
   handleFileInput(files: FileList) {
     const file = files.item(0);
@@ -19,7 +19,7 @@ export class FileReaderComponent {
     const lines = contents.split('\n');
     let currentQuestion: any = {};
     let correctAnswers: string[] = [];
-    lines.forEach(line => {
+    lines.forEach((line) => {
       line = line.trim(); // Remove leading and trailing whitespace
       if (line) {
         if (line.startsWith('Q')) {
@@ -31,15 +31,17 @@ export class FileReaderComponent {
             number: parseInt(line.replace('Q', '').trim()),
             text: '',
             answers: [],
-            solutions: []
+            solutions: [],
           };
           correctAnswers = [];
         } else if (line.startsWith('A')) {
           currentQuestion.answers.push(line.replace('A', '').trim());
         } else if (line.match(/[ABCDE]/)) {
           const correctAnswersLetters = line.trim().split('');
-          correctAnswersLetters.forEach(letter => {
-            correctAnswers.push(currentQuestion.answers[letter.charCodeAt(0) - 65]); // Convert letter to array index
+          correctAnswersLetters.forEach((letter) => {
+            correctAnswers.push(
+              currentQuestion.answers[letter.charCodeAt(0) - 65],
+            ); // Convert letter to array index
           });
         } else {
           currentQuestion.text += line; // Add to question text

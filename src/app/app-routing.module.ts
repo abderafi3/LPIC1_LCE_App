@@ -10,23 +10,30 @@ import { CheckResultComponent } from './check-modus/check-result/check-result.co
 import { ExamResultComponent } from './exam-modus/exam-result/exam-result.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'/home', pathMatch:'full'},
-  {path: 'home', component: HomeComponent},
-  {path: 'learn-modus', redirectTo:'learn-modus/single-modus/1', pathMatch:'full'},
-  {path: 'learn-modus', component: LearnModusComponent, children:[
-    {path: 'single-modus', redirectTo:'single-modus/1', pathMatch:'full'},
-    {path: 'single-modus/:id', component: SingleModusComponent},
-    {path: 'multi-modus', component: MultiModusComponent}
-  ]},
-  {path: 'check-modus/:id', component: CheckModusComponent},
-  {path: 'check-result', component: CheckResultComponent},
-  {path: 'exam-modus', component: ExamModusComponent},
-  {path: 'exam-result', component: ExamResultComponent}
-
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  {
+    path: 'learn-modus',
+    redirectTo: 'learn-modus/single-modus/1',
+    pathMatch: 'full',
+  },
+  {
+    path: 'learn-modus',
+    component: LearnModusComponent,
+    children: [
+      { path: 'single-modus', redirectTo: 'single-modus/1', pathMatch: 'full' },
+      { path: 'single-modus/:id', component: SingleModusComponent },
+      { path: 'multi-modus', component: MultiModusComponent },
+    ],
+  },
+  { path: 'check-modus/:id', component: CheckModusComponent },
+  { path: 'check-result', component: CheckResultComponent },
+  { path: 'exam-modus', component: ExamModusComponent },
+  { path: 'exam-result', component: ExamResultComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

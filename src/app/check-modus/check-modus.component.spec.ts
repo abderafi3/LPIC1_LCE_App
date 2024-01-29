@@ -8,9 +8,8 @@ describe('CheckModusComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckModusComponent ]
-    })
-    .compileComponents();
+      declarations: [CheckModusComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CheckModusComponent);
     component = fixture.componentInstance;

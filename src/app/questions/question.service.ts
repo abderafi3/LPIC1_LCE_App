@@ -4,18 +4,18 @@ import { Observable, map } from 'rxjs';
 import { Question } from './question';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class QuestionService {
-
   private questionsUrl = 'api/questions';
 
-  httpOptions = {headers : new HttpHeaders({'content-type': 'application/json'})};
-  examQuestionnumbers : number = 60;
+  httpOptions = {
+    headers: new HttpHeaders({ 'content-type': 'application/json' }),
+  };
+  examQuestionnumbers = 60;
 
-  constructor(private http: HttpClient) { }
-  getQuestions() : Observable<Question[]>
-  {
+  constructor(private http: HttpClient) {}
+  getQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(this.questionsUrl);
   }
 
@@ -25,16 +25,23 @@ export class QuestionService {
   }
 
   getRandomQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(this.questionsUrl).pipe(
-      map(questions => this.SelectRandomQuestions(questions, this.examQuestionnumbers))
-    );
+    return this.http
+      .get<Question[]>(this.questionsUrl)
+      .pipe(
+        map((questions) =>
+          this.SelectRandomQuestions(questions, this.examQuestionnumbers),
+        ),
+      );
   }
 
-  private SelectRandomQuestions(questions: Question[], count: number): Question[] {
+  private SelectRandomQuestions(
+    questions: Question[],
+    count: number,
+  ): Question[] {
     if (questions.length <= count) {
       return questions;
     } else {
-      const selectedQuestions : Question[] = [];
+      const selectedQuestions: Question[] = [];
       const indices = new Set<number>();
       while (indices.size < count) {
         const randomIndex = Math.floor(Math.random() * questions.length);
@@ -46,10 +53,4 @@ export class QuestionService {
       return selectedQuestions;
     }
   }
-
 }
-
-
-
-
-

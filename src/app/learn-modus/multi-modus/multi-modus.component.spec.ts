@@ -8,9 +8,8 @@ describe('MultiModusComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MultiModusComponent ]
-    })
-    .compileComponents();
+      declarations: [MultiModusComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MultiModusComponent);
     component = fixture.componentInstance;

@@ -8,9 +8,8 @@ describe('SingleChoiceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SingleChoiceComponent ]
-    })
-    .compileComponents();
+      declarations: [SingleChoiceComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SingleChoiceComponent);
     component = fixture.componentInstance;

@@ -8,9 +8,8 @@ describe('ExamPopupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExamPopupComponent ]
-    })
-    .compileComponents();
+      declarations: [ExamPopupComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ExamPopupComponent);
     component = fixture.componentInstance;

@@ -1,38 +1,58 @@
-    <div [hidden]=" onPopupOpen() <= 0">
-      <div  class="modal-header">
-        <h5 class="modal-title">Wrong Answer!</h5>
-        <button type="button" class="btn-close"
-        (click)="onClickClose()" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <div class="modal-body">
-        <p>Please answer only of you are sure!</p>
-        <p>You will be redirected to the previous question!</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-        (click)="onClickClose()" data-bs-dismiss="modal">Dismiss</button>
-        <button type="button" class="btn btn-primary"
-        (click)="onClickLearn()">Learn Modus</button>
-      </div>
-    </div>
-      
-      
-    <div [hidden]=" onPopupOpen() > 0">
-    <div class="modal-header">
-      <h5 class="modal-title">Wrong Answer!</h5>
-      <button type="button" class="btn-close"
-      (click)="onClickClose()" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    
-    <div class="modal-body">
-      <p>Too many wrong answers!!</p>
-      <p>you are being  redirected to the Learn Modus!</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary"
-      (click)="onClickClose()" data-bs-dismiss="modal">Dismiss</button>
-    </div>
+<div [hidden]="onPopupOpen() <= 0">
+  <div class="modal-header">
+    <h5 class="modal-title">Wrong Answer!</h5>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="onClickClose()"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+    ></button>
   </div>
 
-  
+  <div class="modal-body">
+    <p>Please answer only of you are sure!</p>
+    <p>You will be redirected to the previous question!</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="onClickClose()"
+      data-bs-dismiss="modal"
+    >
+      Dismiss
+    </button>
+    <button type="button" class="btn btn-primary" (click)="onClickLearn()">
+      Learn Modus
+    </button>
+  </div>
+</div>
+
+<div [hidden]="onPopupOpen() > 0">
+  <div class="modal-header">
+    <h5 class="modal-title">Wrong Answer!</h5>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="onClickClose()"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <div class="modal-body">
+    <p>Too many wrong answers!!</p>
+    <p>you are being redirected to the Learn Modus!</p>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="onClickClose()"
+      data-bs-dismiss="modal"
+    >
+      Dismiss
+    </button>
+  </div>
+</div>
