@@ -1,8 +1,6 @@
 export class FileReaderComponent {
   questions: any[] = [];
 
-  constructor() {}
-
   handleFileInput(files: FileList) {
     const file = files.item(0);
     if (file) {
