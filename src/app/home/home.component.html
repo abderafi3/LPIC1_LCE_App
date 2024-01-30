@@ -3,8 +3,20 @@
     <div class="col border">
       <p>Welcome Message</p>
       <div class="col mb-3">
-        <img  class="img-fluid rounded mx-auto d-block mb-3 border border-warning border-2" src="../../assets/img/101.jpg" alt="" />
-        <img  class="img-fluid rounded mx-auto d-block mb-3 border border-success border-2" src="../../assets/img/102.jpg" alt="" />
+        <a (click)="onClick101()" routerLink="../learn-modus/single-modus/1">
+          <img
+            class="img-fluid rounded mx-auto d-block mb-3 border border-warning border-2 zoom"
+            src="../../assets/img/101.jpg"
+            alt="Lpic-1-101"
+          />
+        </a>
+        <a (click)="onClick102()" routerLink="../learn-modus/single-modus/1">
+          <img
+            class="img-fluid rounded mx-auto d-block mb-3 border border-success border-2 zoom"
+            src="../../assets/img/102.jpg"
+            alt="Lpic-1-102"
+          />
+        </a>
       </div>
     </div>
     <div class="col border">
@@ -12,7 +24,7 @@
 
       <p>Learn Modus</p>
 
-      <p>Check Modus/p>
+      <p>Check Modus/p></p>
 
       <p>Exam Modus</p>
     </div>

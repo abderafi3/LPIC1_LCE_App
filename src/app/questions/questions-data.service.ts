@@ -7,7 +7,7 @@ import { Question } from './question';
 })
 export class QuestionsDataService implements InMemoryDbService {
   createDb() {
-    const questions: Question[] = [
+    const questions102: Question[] = [
       {
         id: 1,
         question:
@@ -1134,15 +1134,15 @@ export class QuestionsDataService implements InMemoryDbService {
       ;; Got answer:
       ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 14368
       ;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
-      
+
       ;; OPT PSEUDOSECTION:
       ; EDNS: version: 0, flags:; udp: 4096
       ;; QuESTION SECTION:
       ;www.example.org.               IN      NS
-      
+
       ;; AUTHORITY SECTION:
       example.org.            3600    IN      SOA     ns.icann.org. noc.dns.icann.org. 2019121418 7200 3600 1209600 3600
-      
+
       ;; Query time: 96 msec
       ;; SERVER: 172.21.0.9#53(172.21.0.9)
       ;; WHEN: Di Jun 23 13:57:34 CEST 2020
@@ -1270,8 +1270,8 @@ export class QuestionsDataService implements InMemoryDbService {
         question: `
       What command enables a network interface according to distribution-specific configuration, such as
         /etc/network/interfaces
-      or 
-        /etc/sysconfig/network-scripts/ifcfg-eth0? 
+      or
+        /etc/sysconfig/network-scripts/ifcfg-eth0?
       (Specify only the command without any path or parameters.)
       `,
         answers: ['ifup'],
@@ -1507,7 +1507,7 @@ export class QuestionsDataService implements InMemoryDbService {
       },
     ];
 
-    return { questions };
+    return { questions102 };
   }
 
   genId(questions: Question[]): number {

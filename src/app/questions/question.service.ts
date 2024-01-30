@@ -7,7 +7,7 @@ import { Question } from './question';
   providedIn: 'root',
 })
 export class QuestionService {
-  private questionsUrl = 'api/questions';
+  private questionsUrl = 'api/questions102';
 
   httpOptions = {
     headers: new HttpHeaders({ 'content-type': 'application/json' }),
@@ -15,6 +15,11 @@ export class QuestionService {
   examQuestionnumbers = 60;
 
   constructor(private http: HttpClient) {}
+
+  examPartChange(url: string) {
+    this.questionsUrl = url;
+  }
+
   getQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(this.questionsUrl);
   }

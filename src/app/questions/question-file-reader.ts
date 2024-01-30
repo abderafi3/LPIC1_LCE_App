@@ -1,5 +1,6 @@
-const questions = [
-  {
+createDb() {
+  const questions101: Question[] = [
+    {
     id: 1,
      question: "Which type of file system is created by mkfs when it is executed with the block device name only and without any additional parameters?",
     answers: [
@@ -9,7 +10,8 @@ const questions = [
       "ext3",
       "ext4"
     ],
-    "solution": "C"
+    type: "single",
+    solution:["ext2"],
   },
   {
     id: 2,
@@ -21,7 +23,8 @@ const questions = [
       "7640",
       "0029"
     ],
-    "solution": "B"
+    type: "single",
+    solution:["0027"],
   },
   {
     id: 3,
@@ -33,7 +36,8 @@ const questions = [
       "tune2fs -n 200 /dev/sda1",
       "tune2fs --days 200 /dev/sda1"
     ],
-    "solution": "B"
+    type: "single",
+    solution:["tune2fs -i 200 /dev/sda1"],
   },
   {
     id: 4,
@@ -45,7 +49,8 @@ const questions = [
       "0%",
       "5%"
     ],
-    "solution": "E"
+    type: "single",
+    solution:["5%"],
   },
   {
     id: 5,
@@ -57,13 +62,15 @@ const questions = [
       "Unless a systemd mount unit is created, systemd unmounts the file system after a short period of time",
       "systemctl unmount must be used to remove the mount because system opens a file descriptor on the mount point"
     ],
-    "solution": "C"
+    type: "single",
+    solution:["systemd automatically generates a mount unit and monitors the mount point without changing it"],
   },
   {
     id: 6,
      question: "Which program updates the database that is used by the locate command? (Specify ONLY the command without any path or parameters).",
-    answers: [],
-    "solution": "updatedb"
+    answers: ["updatedb"],
+    type: "fillIn",
+    solution:["updatedb"],
   },
   {
     id: 7,
@@ -75,7 +82,8 @@ const questions = [
       "It mounts all file systems listed in /etc/fstab which have the option userbindset",
       "It permanently mounts a regular file to a directory"
     ],
-    "solution": "A"
+    type: "single",
+    solution:["It makes the contents of one directory available in another directory"],
   },
   {
     id: 8,
@@ -87,7 +95,8 @@ const questions = [
       "ln -f c.txt a.txt",
       "ln -i 525385 c.txt"
     ],
-    "solution": "C"
+    type: "single",
+    solution:["ln a.txt c.txt"]
   },
   {
     id: 9,
@@ -99,7 +108,8 @@ const questions = [
       "chown --persistent *.sales sales",
       "chmod 2775 sales"
     ],
-    "solution": "AE"
+    type: "multi",
+    solution:["chmod g+s sales", "chmod 2775 sales"]
   },
   {
     id: 10,
@@ -111,13 +121,15 @@ const questions = [
       "mount",
       "cat /proc/filesystems"
     ],
-    "solution": "AD"
+    type: "multi",
+    solution:["cat /proc/self/mounts", "mount"]
   },
   {
     id: 11,
      question: "Which command displays the current disk space usage for all mounted file systems? (Specify ONLY the command without any path or parameters.)",
-    answers: [],
-    "solution": "df"
+    answers: ["updatedb"],
+    type: "fillIn",
+    solution:["updatedb"],
   },
   {
     id: 12,
@@ -129,7 +141,8 @@ const questions = [
       "chown dave+staff data.txt",
       "chown dave:staff data.txt"
     ],
-    "solution": "E"
+    type: "single",
+    solution:[ "chown dave:staff data.txt"]
   },
   {
     id: 13,
@@ -141,7 +154,8 @@ const questions = [
       "If users other than root should be able to create hard links, suln has to be installed and configured",
       "When a hard linked file is changed, a copy of the file is created and consumes additional space"
     ],
-    "solution": "C"
+    type: "single",
+    solution:["Hard links are specific to one filesystem and cannot point to files on another filesystem"]
   },
   {
     id: 14,
@@ -153,13 +167,15 @@ const questions = [
       "/var/pkg/man",
       "/var/man/"
     ],
-    "solution": "C"
+    type: "single",
+    solution:["/usr/share/man/"]
   },
   {
     id: 15,
      question: "Which file in the /proc filesystem lists parameters passed from the bootloader to the kernel? (Specify the file name only without any path.)",
-    answers: [],
-    "solution": "cmdline"
+    answers: ["cmdline"],
+    type: "fillIn",
+    solution:["cmdline"],
   },
   {
     id: 16,
@@ -171,7 +187,8 @@ const questions = [
       "It is different with each reboot",
       "It is set to the current run level"
     ],
-    "solution": "C"
+    type: "single",
+    solution:["1"]
   },
   {
     id: 17,
@@ -183,7 +200,8 @@ const questions = [
       "psd",
       "inetd"
     ],
-    "solution": "A"
+    type: "single",
+    solution:["acpid"]
   },
   {
     id: 18,
@@ -195,7 +213,8 @@ const questions = [
       "The BIOS initiates the boot process after turning the computer on",
       "The BIOS is started by loading hardware drivers from secondary storage, such as the hard disk"
     ],
-    "solution": "AD"
+    type: "multi",
+    solution:[ "Some parts of the boot process can be configured from the BIOS", "The BIOS initiates the boot process after turning the computer on"]
   },
   {
     id: 19,
@@ -207,7 +226,8 @@ const questions = [
       "It is stored in a special area within the GPT metadata",
       "It is loaded from a fixed boot disk position"
     ],
-    "solution": "AB"
+    type: "multi",
+    solution:["It can read and interpret partition tables","It can use and read certain file systems"]
   },
   {
     id: 20,
@@ -219,7 +239,8 @@ const questions = [
       "Adding a blacklist line including the name of the offending module to the file /etc/modprobe.d/blacklist.conf",
       "Deleting the kernel module’s directory from the file system and recompiling the kernel, including its modules"
     ],
-    "solution": "D"
+    type: "single",
+    solution:["Adding a blacklist line including the name of the offending module to the file /etc/modprobe.d/blacklist.conf"]
   },
   {
     id: 21,
@@ -231,7 +252,9 @@ const questions = [
       "When the kernel loads a previously unloaded kernel module",
       "When the system is shut down or rebooted"
     ],
-    "solution": "AE"
+    type: "multi",
+    solution:["When the ring buffer is explicitly reset using the command dmesg --clear","When the system is shut down or rebooted"]
+
   },
   {
     id: 22,
@@ -243,7 +266,9 @@ const questions = [
       "/sbin/init",
       "/boot/init"
     ],
-    "solution": "D"
+    type: "single",
+    solution:["/sbin/init"]
+
   },
   {
     id: 23,
@@ -255,7 +280,8 @@ const questions = [
       "dpkg -S  /etc/debian_version",
       "apt-file /etc/debian_version"
     ],
-    "solution": "D"
+    type: "single",
+    solution:["dpkg -S  /etc/debian_version"]
   },
   {
     id: 24,
@@ -267,7 +293,8 @@ const questions = [
       "The Linux default shell binaries",
       "The user home directories"
     ],
-    "solution": "B"
+    type: "single",
+    solution:["The first stage boot loader",]
   },
   {
     id: 25,
@@ -279,7 +306,8 @@ const questions = [
       "/lib64/",
       "/opt/lib64/"
     ],
-    "solution": "BD"
+    type: "multi",
+    solution:["/usr/lib64/",  "/lib64/",]
   },
   {
     id: 26,
@@ -291,7 +319,8 @@ const questions = [
       "/boot/grub/grub.cfg",
       "/boot/grub/linux/vmlinuz"
     ],
-    "solution": "BD"
+    type: "multi",
+    solution:["/boot/grub/i386-pc/lvm.mod", "/boot/grub/grub.cfg",]
   },
   {
     id: 27,
@@ -303,7 +332,8 @@ const questions = [
       "zypper install \"*foo\"",
       "zypper add \".*foo\""
     ],
-    "solution": "D"
+    type: "single",
+    solution:["zypper install \"*foo\"",]
   },
   {
     id: 28,
@@ -315,7 +345,8 @@ const questions = [
       "The permissions of /root/",
       "The SSH host keys"
     ],
-    "solution": "CE"
+    type: "multi",
+    solution:[ "The D-Bus Machine ID", "The SSH host keys"]
   },
   {
     id: 29,
@@ -327,7 +358,8 @@ const questions = [
       "grub-setup /dev/sdc",
       "grub-install /dev/sdc"
     ],
-    "solution": "E"
+    type: "single",
+    solution:["grub-install /dev/sdc"]
   },
   {
     id: 30,
@@ -339,7 +371,8 @@ const questions = [
       "8e",
       "fd"
     ],
-    "solution": "B"
+    type: "single",
+    solution:["82"]
   },
   {
     id: 31,
@@ -351,7 +384,8 @@ const questions = [
       "Repository configurations can include variables such as $basearch or $releasever",
       "In case /etc/yum.repos.d/ contains files, /etc/yum.config ignored"
     ],
-    "solution": "CD"
+    type: "multi",
+    solution:["The configuration of package repositories can be divided into multiple files","Repository configurations can include variables such as $basearch or $releasever",]
   },
   {
     id: 32,
@@ -363,7 +397,8 @@ const questions = [
       "install",
       "update"
     ],
-    "solution": "B"
+    type: "single",
+    solution:["dist-upgrade"]
   },
   {
     id: 33,
@@ -375,7 +410,8 @@ const questions = [
       "dpkg -v pkgname",
       "dpkg -r pkgname"
     ],
-    "solution": "E"
+    type: "single",
+    solution:["dpkg -r pkgname"]
   },
   {
     id: 34,
@@ -387,7 +423,8 @@ const questions = [
       "rpm -R foo.rpm",
       "rpm -pD foo"
     ],
-    "solution": "A"
+    type: "single",
+    solution:["rpm -qpR foo.rpm"]
   },
   {
     id: 35,
@@ -399,7 +436,8 @@ const questions = [
       "49",
       "99"
     ],
-    "solution": "C"
+    type: "single",
+    solution:["19"]
   },
   {
     id: 36,
@@ -411,7 +449,7 @@ const questions = [
       "find /tmp -user root",
       "find -path /tmp -user root -print"
     ],
-    "solution": "AD"
+    solution:[] "AD"
   },
   {
     id: 37,
@@ -423,7 +461,7 @@ const questions = [
       ">>>",
       "2>&1"
     ],
-    "solution": "AE"
+    solution:[] "AE"
   },
   {
     id: 38,
@@ -435,7 +473,7 @@ const questions = [
       "dd2",
       "de12"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 39,
@@ -447,7 +485,7 @@ const questions = [
       "bg dbmaint",
       "wait dbmaint"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 40,
@@ -459,13 +497,13 @@ const questions = [
       ".  /usr/local/bin/runme.sh",
       "run /usr/local/bin/runme.sh"
     ],
-    "solution": "AD"
+    solution:[] "AD"
   },
   {
     id: 41,
      question: "Which program runs a command in specific intervals and refreshes the display of the program’s output? (Specify ONLY the command without any path or parameters.)",
     answers: [],
-    "solution": "watch"
+    solution:[] "watch"
   },
   {
     id: 42,
@@ -477,7 +515,7 @@ const questions = [
       "U (uppercase)",
       "u (lowercase)"
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 43,
@@ -489,7 +527,7 @@ const questions = [
       "tr '\\r' '\\n' userlist.txt newlist.txt",
       "tr -s '/^M/^J/' userlist.txt newlist.txt"
     ],
-    "solution": "A"
+    solution:[] "A"
   },
   {
     id: 44,
@@ -501,7 +539,7 @@ const questions = [
       "s/^txt$/.bak^/",
       "s/[.txt]/.bak$1/"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 45,
@@ -513,7 +551,7 @@ const questions = [
       ":w filea.txt",
       ":s filea.txt"
     ],
-    "solution": "D"
+    solution:[] "D"
   },
   {
     id: 46,
@@ -525,7 +563,7 @@ const questions = [
       "SIGKILL",
       "SIGINT"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 47,
@@ -537,7 +575,7 @@ const questions = [
       "foo | tee /tmp/foodata",
       "foo > stdout >> /tmp/foodata"
     ],
-    "solution": "D"
+    solution:[] "D"
   },
   {
     id: 48,
@@ -549,7 +587,7 @@ const questions = [
       "fred $USER",
       "'fred fred’"
     ],
-    "solution": "D"
+    solution:[] "D"
   },
   {
     id: 49,
@@ -561,7 +599,7 @@ const questions = [
       "whatis foo",
       "which foo"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 50,
@@ -573,7 +611,7 @@ const questions = [
       "-ignore-space",
       "-print0"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 51,
@@ -585,7 +623,7 @@ const questions = [
       "uname -u",
       "top"
     ],
-    "solution": "AE"
+    solution:[] "AE"
   },
   {
     id: 52,
@@ -597,7 +635,7 @@ const questions = [
       "The command files is executed and receives the output of ls",
       "Any output of ls is discarded"
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 53,
@@ -609,7 +647,7 @@ const questions = [
       ".bash_history",
       ".history_bash"
     ],
-    "solution": "D"
+    solution:[] "D"
   },
   {
     id: 54,
@@ -621,7 +659,7 @@ const questions = [
       "tty[A-Z][012]",
       "tty[Ss][02]"
     ],
-    "solution": "BD"
+    solution:[] "BD"
   },
   {
     id: 55,
@@ -633,7 +671,7 @@ const questions = [
       "ls >>2",
       "ls |error"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 56,
@@ -645,7 +683,7 @@ const questions = [
       "tar cf archive.tgz",
       "tar ztf archive.tgz"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 57,
@@ -657,7 +695,7 @@ const questions = [
       "paste -f 1,4 /etc/passwd",
       "split -c 1,4 /etc/passwd"
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 58,
@@ -669,13 +707,13 @@ const questions = [
       "%C",
       "{AZ}"
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 59,
      question: "Which command is used to start another command with a given nice level? (Specify ONLY the command without any path or parameters.)",
     answers: [],
-    "solution": "nice"
+    solution:[] "nice"
   },
   {
     id: 60,
@@ -687,7 +725,7 @@ const questions = [
       "grep loga.log ':08:[0-9]:[0-9]’",
       "grep -E ':08:[0-9]+:[0-9]+’ loga.log"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 61,
@@ -699,7 +737,7 @@ const questions = [
       "NAME",
       "UUID"
     ],
-    "solution": "AE"
+    solution:[] "AE"
   },
   {
     id: 62,
@@ -711,13 +749,13 @@ const questions = [
       "yum taskinstall admintools",
       "yum collection install admintools"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 63,
      question: "What directory contains configuration files for additional yum repositories? (Specify the full path to the directory.)",
     answers: [],
-    "solution": "/etc/yum.repos.d"
+    solution:[] "/etc/yum.repos.d"
   },
   {
     id: 64,
@@ -729,7 +767,7 @@ const questions = [
       "grub-install /dev/sda0",
       "grub-install current /dev/sda1"
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 65,
@@ -741,7 +779,7 @@ const questions = [
       "Initial ramdisk images",
       "fsck binaries"
     ],
-    "solution": "AD"
+    solution:[] "AD"
   },
   {
     id: 66,
@@ -753,7 +791,7 @@ const questions = [
       "/etc/dpkg/dselect.cfg",
       "/etc/apt/sources.list"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 67,
@@ -765,7 +803,7 @@ const questions = [
       "--remove",
       "--declare"
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 68,
@@ -777,7 +815,7 @@ const questions = [
       "The guest environment for fully virtualized machines is created by a hypervisor which provides virtual and emulated hardware devices.",
       "Containers on the same host can use different operating systems, as the container hypervisor creates separate kernel execution."
     ],
-    "solution": "ABD"
+    solution:[] "ABD"
   },
   {
     id: 69,
@@ -789,7 +827,7 @@ const questions = [
       "apt-get all",
       "apt-get install -f"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 70,
@@ -801,7 +839,7 @@ const questions = [
       "rpm --list --installed",
       "rpm --query --all"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 71,
@@ -813,7 +851,7 @@ const questions = [
       "insmod",
       "kpartx"
     ],
-    "solution": "AD"
+    solution:[] "AD"
   },
   {
     id: 72,
@@ -825,7 +863,7 @@ const questions = [
       "It defines which version of a library should be used by default.",
       "It runs a binary with an alternate library search path."
     ],
-    "solution": "A"
+    solution:[] "A"
   },
   {
     id: 73,
@@ -837,7 +875,7 @@ const questions = [
       "To create RAID 9 arrays.",
       "To encrypt logical volumes."
     ],
-    "solution": "ABC"
+    solution:[] "ABC"
   },
   {
     id: 74,
@@ -849,7 +887,7 @@ const questions = [
       "MBR can handle partition sizes up to 2.2 TB, whereas GPT supports sizes up to 9.4 ZB.",
       "Both GPT and MBR support up to four primary partitions, each with up to 4096 TB."
     ],
-    "solution": "BD"
+    solution:[] "BD"
   },
   {
     id: 75,
@@ -861,13 +899,13 @@ const questions = [
       "The backup consumes less space because the hard links point to the same data on disk instead of storing redundant copies.",
       "The backup runs faster because, instead of copying the data of each file, hard links only change file system meta data."
     ],
-    "solution": "DE"
+    solution:[] "DE"
   },
   {
     id: 76,
      question: "Which file from the /proc/ filesystem contains a list of all currently mounted devices? (Specify the full name of the file, including path.)",
     answers: [],
-    "solution": "/proc/mounts"
+    solution:[] "/proc/mounts"
   },
   {
     id: 77,
@@ -879,7 +917,7 @@ const questions = [
       "6",
       "7"
     ],
-    "solution": "D"
+    solution:[] "D"
   },
   {
     id: 78,
@@ -891,7 +929,7 @@ const questions = [
       "filea.txt is a hard link whose permissions are inherited from the target and cannot be set directly.",
       "filea.txt has the SetUID bit set which imposes the restriction that only the root user can make changes to the file."
     ],
-    "solution": "AB"
+    solution:[] "AB"
   },
   {
     id: 79,
@@ -903,7 +941,7 @@ const questions = [
       "ext2",
       "procfs"
     ],
-    "solution": "BD"
+    solution:[] "BD"
   },
   {
     id: 80,
@@ -915,7 +953,7 @@ const questions = [
       "chmod 755+s /bin/foo",
       "chmod 2755 /bin/foo"
     ],
-    "solution": "A"
+    solution:[] "A"
   },
   {
     id: 81,
@@ -927,7 +965,7 @@ const questions = [
       "cp",
       "stat"
     ],
-    "solution": "CE"
+    solution:[] "CE"
   },
   {
     id: 82,
@@ -939,7 +977,7 @@ const questions = [
       "0227",
       "0027"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 83,
@@ -951,7 +989,7 @@ const questions = [
       "By running xfsadmin repairon the file system",
       "By running xfs_repair on the file system"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 84,
@@ -963,13 +1001,13 @@ const questions = [
       "Inode number",
       "Permissions"
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 85,
      question: "Following the Filesystem Hierarchy Standard (FHS), where should binaries that have been compiled by the system administrator be placed in order to be made available to all users on the system? (Specify the full path to the directory.)",
     answers: [],
-    "solution": "/usr/local/bin"
+    solution:[] "/usr/local/bin"
   },
   {
     id: 86,
@@ -981,7 +1019,7 @@ const questions = [
       "case",
       "fileinfo"
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 87,
@@ -993,7 +1031,7 @@ const questions = [
       "?",
       "s"
     ],
-    "solution": "D"
+    solution:[] "D"
   },
   {
     id: 88,
@@ -1005,7 +1043,7 @@ const questions = [
       "man 1.command",
       "man -s 1 command"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 89,
@@ -1017,7 +1055,7 @@ const questions = [
       "ls >> data",
       "ls >>> data"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 90,
@@ -1029,7 +1067,7 @@ const questions = [
       "set",
       "envsetup"
     ],
-    "solution": "D"
+    solution:[] "D"
   },
   {
     id: 91,
@@ -1041,7 +1079,7 @@ const questions = [
       "pgrep -U 0",
       "pgrep -c 0"
     ],
-    "solution": "BD"
+    solution:[] "BD"
   },
   {
     id: 92,
@@ -1053,7 +1091,7 @@ const questions = [
       "Esc :wq",
       "Esc ZZ"
     ],
-    "solution": "DE"
+    solution:[] "DE"
   },
   {
     id: 93,
@@ -1065,7 +1103,7 @@ const questions = [
       "It changes the output order showing the last matching line first.",
       "It outputs all lines and prefixes matching lines with a+."
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 94,
@@ -1077,7 +1115,7 @@ const questions = [
       "locate",
       "type"
     ],
-    "solution": "CE"
+    solution:[] "CE"
   },
   {
     id: 95,
@@ -1089,7 +1127,7 @@ const questions = [
       "SIGKILL",
       "SIGINT"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 96,
@@ -1101,7 +1139,7 @@ const questions = [
       "ABCabc",
       "Axxaxx"
     ],
-    "solution": "A"
+    solution:[] "A"
   },
   {
     id: 97,
@@ -1113,7 +1151,7 @@ const questions = [
       "pwd",
       "echo \"${pwd}\""
     ],
-    "solution": "AD"
+    solution:[] "AD"
   },
   {
     id: 98,
@@ -1126,7 +1164,7 @@ const questions = [
       " cat &<EOT",
       " cat <<EOT"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 99,
@@ -1138,7 +1176,7 @@ const questions = [
       "15",
       "20"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 100,
@@ -1150,7 +1188,7 @@ const questions = [
       "rmdir ~/\\dir",
       "rmdir '~/\\dir’"
     ],
-    "solution": "A"
+    solution:[] "A"
   },
   {
     id: 101,
@@ -1162,7 +1200,7 @@ const questions = [
       "reggrep",
       "pgrep"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 102,
@@ -1174,7 +1212,7 @@ const questions = [
       "-s",
       "-n"
     ],
-    "solution": "A"
+    solution:[] "A"
   },
   {
     id: 103,
@@ -1186,7 +1224,7 @@ const questions = [
       "pmagic",
       "hash"
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 104,
@@ -1198,7 +1236,7 @@ const questions = [
       "sort -t: -k1,7 /etc/passwd",
       "cut -d: -f1,7 /etc/passwd"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 105,
@@ -1210,7 +1248,7 @@ const questions = [
       "Only a.txt and b.txt",
       "Only texts.tar"
     ],
-    "solution": "E"
+    solution:[] "E"
   },
   {
     id: 106,
@@ -1222,7 +1260,7 @@ const questions = [
       "By issuing a command such as :set repetition=4 with repeats every subsequent command 4 times.",
       "By specifying the number after a command such as l4 or yj2 followed by escape."
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 107,
@@ -1234,7 +1272,7 @@ const questions = [
       "The command is run as a direct child of the init process.",
       "The command’s input is read from /dev/null."
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 108,
@@ -1246,7 +1284,7 @@ const questions = [
       "split",
       "parted"
     ],
-    "solution": "D"
+    solution:[] "D"
   },
   {
     id: 109,
@@ -1258,19 +1296,19 @@ const questions = [
       "It asks a question, graphically, and returns the answer to the shell.",
       "It allows specifying long options (like --help) for commands that normally only accept short options (like -h)"
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 110,
      question: "Which command displays a list of all background tasks running in the current shell? (Specify ONLY the command without any path or parameters.)",
     answers: [],
-    "solution": "jobs"
+    solution:[] "jobs"
   },
   {
     id: 111,
      question: "Which command is used to change the priority of an already running process? (Specify ONLY the command without any path or parameters.)",
     answers: [],
-    "solution": "renice"
+    solution:[] "renice"
   },
   {
     id: 112,
@@ -1282,7 +1320,7 @@ const questions = [
       "…standard error to standard output.",
       "…standard output to standard input."
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 113,
@@ -1294,7 +1332,7 @@ const questions = [
       "Using chroot to switch to the file system on the hard disk and use dmesg to view the logs.",
       "Rebooting again from the hard drive since the system successfully booted from the rescue CD."
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 114,
@@ -1306,7 +1344,7 @@ const questions = [
       "On the partition labeled boot.",
       "On the partition number 127."
     ],
-    "solution": "C"
+    solution:[] "C"
   },
   {
     id: 115,
@@ -1318,7 +1356,7 @@ const questions = [
       "systemctl set-default multi-user.target",
       "systemctl boot -p multi-user.target"
     ],
-    "solution": "D"
+    solution:[] "D"
   },
   {
     id: 116,
@@ -1330,7 +1368,7 @@ const questions = [
       "The kernel uses the initramfs temporarily before accessing the real root file system.",
       "An initramfs does not depend on a specific kernel version and is not changed after the initial installation."
     ],
-    "solution": "AD"
+    solution:[] "AD"
   },
   {
     id: 117,
@@ -1342,7 +1380,7 @@ const questions = [
       "insmod",
       "loadmod"
     ],
-    "solution": "B"
+    solution:[] "B"
   },
   {
     id: 118,
@@ -1354,13 +1392,13 @@ const questions = [
       "Ethernet MAC address",
       "Device vendor identification"
     ],
-    "solution": "BCE"
+    solution:[] "BCE"
   },
   {
     id: 119,
      question: "Which System V init configuration file is commonly used to set the default run level? (Specify the full name of the file, including path.)",
     answers: [],
-    "solution": "/etc/inittab"
+    solution:[] "/etc/inittab"
   },
   {
     id: 120,
@@ -1372,8 +1410,10 @@ const questions = [
       "Both S02apache2 and K01apache2 are run during a system shutdown.",
       "K01apache2 is run when runlevel 1 is entered."
     ],
-    "solution": "AE"
+    solution:[] "AE"
   }
 ];
 
-module.exports = questions;
+return { questions101 };
+}
+
