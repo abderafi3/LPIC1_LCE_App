@@ -1,8 +1,7 @@
-<div class="container border mb-3">
+<div class="container mb-3">
   <div class="row">
-    <div class="col border">
-      <p>Welcome Message</p>
-      <div class="col mb-3">
+    <div class="col">
+      <div class="col mb-3 mt-3">
         <a (click)="onClick101()" routerLink="../learn-modus/single-modus/1">
           <img
             class="img-fluid rounded mx-auto d-block mb-3 border border-warning border-2 zoom"
@@ -19,14 +18,45 @@
         </a>
       </div>
     </div>
-    <div class="col border">
-      <p>Beschreibung</p>
+    <div class="col">
+      <p class="lh-lg justify">
+        Diese App bietet Ihnen die Möglichkeit um sich vorzubereiten auf die
+        internationale Zertifizierungsprüfungen für Prüfungen des Linux
+        Professional Institut – LPIC-1. Die App enthaelt momentan die beiden
+        LPIC-1 teile: LPIC-1 101 und LPIC-1 102. Sie gelangen zum gewünschten
+        Katalog, indem Sie links auf das entsprechende Bild klicken.
+        Standardmäßig wird der Fragenkatalog LPIC-1 101 geladen
+      </p>
+      <div
+        routerLink="../learn-modus/single-modus/1"
+        class="border border-2 zoom mt-3"
+      >
+        <p class="fw-bold ms-2 mt-2">Learn Modus</p>
+        <p class="lh-lg justify">
+          Sie sollten Learn Modus auswählen, wenn Sie Ihre Lernreise beginnen
+          möchten: Die Fragen werden hier in Listenform aufgeführt und auch als
+          jeweils einzelne angezeigte Frage durchgegangen werden können. Dabei
+          werden die richtigen Antworten erst nach Aufforderung gezeigt.
+        </p>
+      </div>
 
-      <p>Learn Modus</p>
-
-      <p>Check Modus/p></p>
-
-      <p>Exam Modus</p>
+      <div routerLink="../check-modus/1" class="border border-2 zoom mt-3">
+        <p class="fw-bold ms-2 mt-2">Check Modus</p>
+        <p class="lh-lg justify">
+          Wählen Sie Check Modus wenn Sie Ihre gewonnenen Wissens überrüfungen
+          wollen oder wenn Sie bereits schon vorhandenen Wissens haben. Die
+          Fragen werden einzeln bearbeitet werden und auf jede Frage Kann man
+          antworten oder überspringen.
+        </p>
+      </div>
+      <div routerLink="../exam-modus/" class="border border-2 zoom mt-3">
+        <p class="fw-bold ms-2 mt-2">Exam Modus</p>
+        <p class="lh-lg justify">
+          Der Exam-Modus entspricht dem Modus des lpisim, Die Fragen werden
+          zufällig generiert und einzeln bearbeitet werden und am Ende das
+          Ergebnis zeigen.
+        </p>
+      </div>
     </div>
   </div>
 </div>
