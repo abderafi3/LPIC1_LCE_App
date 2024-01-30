@@ -22,7 +22,6 @@ export class ExamResultComponent implements OnInit {
   ngOnInit(): void {
     this.totalCorrect = this.answerService.correctAnswers.length;
     this.totalWrong = this.answerService.wrongAnswers.length;
-    console.log(this.answerService.wrongAnswers);
     this.totalNotAnswred = this.answerService.wrongAnswers.filter(
       (obj) => obj.answers[0] === '' || obj.answers.length === 0,
     ).length;

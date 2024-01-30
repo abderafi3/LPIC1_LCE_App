@@ -37,12 +37,10 @@ export class AnswerService {
   }
 
   getCorrectAnswers() {
-    console.log(this.correctAnswers);
     return this.correctAnswers;
   }
 
   getWrongAnswers(): Answer[] {
-    console.log(this.wrongAnswers);
     return this.wrongAnswers;
   }
 
@@ -72,7 +70,6 @@ export class AnswerService {
       })),
     ];
     this.combinedAnswers.sort((a, b) => a.questionId - b.questionId);
-    console.log(this.combinedAnswers);
     return this.combinedAnswers;
   }
 

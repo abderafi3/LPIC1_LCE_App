@@ -59,15 +59,11 @@ export class ExamModusComponent {
       // Fill-in questions && single-choice questions
       if (this.question.type !== 'multi') {
         if (solution[0] === this.inputText) {
-          console.log(this.inputText);
-          console.log(this.question.solution);
-          console.log('single-fill : Correct');
           this.answerService.addCorrectAnswer(
             new Answer(this.questionId, userAsnwer, this.question),
           );
           this.question = this.questions[++this.questionId];
         } else {
-          console.log('single-fill : wrong');
           this.answerService.addWrongAnswer(
             new Answer(this.questionId, userAsnwer, this.question),
           );
@@ -80,13 +76,13 @@ export class ExamModusComponent {
           solution.every((v, i) => v === userAsnwerMulti[i]);
 
         if (solution && equalsCheck(solution, this.userAsnwerMulti)) {
-          console.log('-multi : Correct'); //Correct answers
+          //Correct answers
           this.answerService.addCorrectAnswer(
             new Answer(this.questionId, this.userAsnwerMulti, this.question),
           );
           this.question = this.questions[++this.questionId];
         } else {
-          console.log('-multi : wrong'); //Incorrect answers
+          //Incorrect answers
           this.answerService.addWrongAnswer(
             new Answer(this.questionId, this.userAsnwerMulti, this.question),
           );
@@ -100,11 +96,6 @@ export class ExamModusComponent {
       this.answerService.openExamPopup();
       this.onClickEnd();
     }
-    console.log(this.answerService.calculateScore());
-  }
-
-  onTest() {
-    this.answerService.getExamSolution();
   }
 
   isScoreLow() {

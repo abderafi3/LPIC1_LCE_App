@@ -11,8 +11,6 @@ import { HomeComponent } from './home/home.component';
 import { LearnModusComponent } from './learn-modus/learn-modus.component';
 import { CheckModusComponent } from './check-modus/check-modus.component';
 import { ExamModusComponent } from './exam-modus/exam-modus.component';
-import { QuestionListComponent } from './questions/question-list/question-list.component';
-import { QuestionItemComponent } from './questions/question-item/question-item.component';
 import { SingleModusComponent } from './learn-modus/single-modus/single-modus.component';
 import { MultiModusComponent } from './learn-modus/multi-modus/multi-modus.component';
 import { CheckResultComponent } from './check-modus/check-result/check-result.component';
@@ -29,8 +27,6 @@ import { ExamPopupComponent } from './exam-modus/exam-popup/exam-popup.component
     LearnModusComponent,
     CheckModusComponent,
     ExamModusComponent,
-    QuestionListComponent,
-    QuestionItemComponent,
     SingleModusComponent,
     MultiModusComponent,
     CheckResultComponent,
