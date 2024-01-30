@@ -17,9 +17,6 @@ import { SingleModusComponent } from './learn-modus/single-modus/single-modus.co
 import { MultiModusComponent } from './learn-modus/multi-modus/multi-modus.component';
 import { CheckResultComponent } from './check-modus/check-result/check-result.component';
 import { ExamResultComponent } from './exam-modus/exam-result/exam-result.component';
-import { SingleChoiceComponent } from './questions/question-item/single-choice/single-choice.component';
-import { MultiChoiceComponent } from './questions/question-item/multi-choice/multi-choice.component';
-import { FillInComponent } from './questions/question-item/fill-in/fill-in.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ExamPopupComponent } from './exam-modus/exam-popup/exam-popup.component';
@@ -38,9 +35,6 @@ import { ExamPopupComponent } from './exam-modus/exam-popup/exam-popup.component
     MultiModusComponent,
     CheckResultComponent,
     ExamResultComponent,
-    SingleChoiceComponent,
-    MultiChoiceComponent,
-    FillInComponent,
     ExamPopupComponent,
   ],
   imports: [
