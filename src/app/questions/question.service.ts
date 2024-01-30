@@ -20,6 +20,10 @@ export class QuestionService {
     this.questionsUrl = url;
   }
 
+  getQuestionCatalogue() {
+    return this.questionsUrl;
+  }
+
   getQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(this.questionsUrl);
   }
