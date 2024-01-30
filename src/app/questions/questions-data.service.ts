@@ -2249,7 +2249,7 @@ export class QuestionsDataService implements InMemoryDbService {
         question:
           'Which command is used to start another command with a given nice level? (Specify ONLY the command without any path or parameters.)',
         answers: ['nice'],
-        type: 'fillin',
+        type: 'fillIn',
         solution: ['nice'],
       },
       {
@@ -2293,7 +2293,7 @@ export class QuestionsDataService implements InMemoryDbService {
         question:
           'What directory contains configuration files for additional yum repositories? (Specify the full path to the directory.)',
         answers: ['/etc/yum.repos.d'],
-        type: 'fillin',
+        type: 'fillIn',
         solution: ['/etc/yum.repos.d'],
       },
       {
@@ -2470,7 +2470,7 @@ export class QuestionsDataService implements InMemoryDbService {
         question:
           'Which file from the /proc/ filesystem contains a list of all currently mounted devices? (Specify the full name of the file, including path.)',
         answers: ['/proc/mounts'],
-        type: 'fillin',
+        type: 'fillIn',
         solution: ['/proc/mounts'],
       },
       {
@@ -2569,7 +2569,7 @@ export class QuestionsDataService implements InMemoryDbService {
         question:
           'Following the Filesystem Hierarchy Standard (FHS), where should binaries that have been compiled by the system administrator be placed in order to be made available to all users on the system? (Specify the full path to the directory.)',
         answers: ['/usr/local/bin'],
-        type: 'fillin',
+        type: 'fillIn',
         solution: ['/usr/local/bin'],
       },
       {
@@ -2842,7 +2842,7 @@ export class QuestionsDataService implements InMemoryDbService {
         question:
           'Which command displays a list of all background tasks running in the current shell? (Specify ONLY the command without any path or parameters.)',
         answers: ['jobs'],
-        type: 'fillin',
+        type: 'fillIn',
         solution: ['jobs'],
       },
       {
@@ -2850,7 +2850,7 @@ export class QuestionsDataService implements InMemoryDbService {
         question:
           'Which command is used to change the priority of an already running process? (Specify ONLY the command without any path or parameters.)',
         answers: ['renice'],
-        type: 'fillin',
+        type: 'fillIn',
         solution: ['renice'],
       },
       {
@@ -2958,7 +2958,7 @@ export class QuestionsDataService implements InMemoryDbService {
         question:
           'Which System V init configuration file is commonly used to set the default run level? (Specify the full name of the file, including path.)',
         answers: ['/etc/inittab'],
-        type: 'fillin',
+        type: 'fillIn',
         solution: ['/etc/inittab'],
       },
       {
