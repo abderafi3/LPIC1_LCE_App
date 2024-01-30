@@ -1972,7 +1972,7 @@ export class QuestionsDataService implements InMemoryDbService {
           'find /tmp -user root',
           'find -path /tmp -user root -print',
         ],
-        type: 'muli',
+        type: 'multi',
         solution: ['find /tmp -user root -print', 'find /tmp -user root'],
       },
       {
@@ -1980,7 +1980,7 @@ export class QuestionsDataService implements InMemoryDbService {
         question:
           'Which of the following are valid stream redirection operators within Bash? (Choose two.)',
         answers: ['<', '#>', '%>', '>>>', '2>&1'],
-        type: 'muli',
+        type: 'multi',
         solution: ['<', '2>&1'],
       },
       {
@@ -2016,7 +2016,7 @@ export class QuestionsDataService implements InMemoryDbService {
           './usr/local/bin/runme.sh',
           'run /usr/local/bin/runme.sh',
         ],
-        type: 'muli',
+        type: 'multi',
         solution: [
           'source /usr/local/bin/runme.sh',
           './usr/local/bin/runme.sh',

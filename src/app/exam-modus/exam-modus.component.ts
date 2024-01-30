@@ -111,4 +111,12 @@ export class ExamModusComponent {
     this.answerService.getExamSolution();
     this.router.navigate(['../exam-result']);
   }
+
+  getQuestionListName() : string {
+    if (this.questionService.getQuestionsCatalogue() === 'api/questions101') {
+      return 'LPIC-1 101' 
+    } else {
+      return 'LPIC-1 102'
+    }
+  }
 }

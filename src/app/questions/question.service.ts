@@ -20,7 +20,7 @@ export class QuestionService {
     this.questionsUrl = url;
   }
 
-  getQuestionCatalogue() {
+  getQuestionsCatalogue() {
     return this.questionsUrl;
   }
 

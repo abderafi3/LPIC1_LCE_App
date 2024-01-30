@@ -128,4 +128,12 @@ export class CheckModusComponent implements OnInit {
   onClickEnd() {
     this.router.navigate(['../check-result']);
   }
+
+  getQuestionListName() : string {
+    if (this.questionService.getQuestionsCatalogue() === 'api/questions101') {
+      return 'LPIC-1 101' 
+    } else {
+      return 'LPIC-1 102'
+    }
+  }
 }

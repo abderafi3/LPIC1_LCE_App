@@ -7,10 +7,14 @@ import { QuestionService } from '../questions/question.service';
   styleUrls: ['./learn-modus.component.css'],
 })
 export class LearnModusComponent {
-  questionListName: string = '';
+
   constructor(private questionService: QuestionService) {}
-  getQuestionListName() {
-    if (this.questionService.getQuestionCatalogue()) {
+
+  getQuestionListName() : string {
+    if (this.questionService.getQuestionsCatalogue() === 'api/questions101') {
+      return 'LPIC-1 101' 
+    } else {
+      return 'LPIC-1 102'
     }
   }
 }
