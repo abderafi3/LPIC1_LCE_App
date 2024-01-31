@@ -40,6 +40,7 @@ import { ExamPopupComponent } from './exam-modus/exam-popup/exam-popup.component
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(QuestionsDataService, {
       dataEncapsulation: false,
+      delay: 50,
     }),
     NgbModule,
   ],
