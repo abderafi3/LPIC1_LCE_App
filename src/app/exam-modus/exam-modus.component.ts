@@ -17,8 +17,6 @@ export class ExamModusComponent {
 
   inputText = '';
   userAsnwerMulti: string[] = [];
-  actualScore = 1;
-  examCancelEvnt = 0.2;
 
   constructor(
     private questionService: QuestionService,
@@ -89,7 +87,7 @@ export class ExamModusComponent {
           this.question = this.questions[++this.questionId];
         }
       }
-      this.inputText = ''; //rest
+      this.inputText = ''; //reset
       this.userAsnwerMulti = [];
     }
     if (this.isScoreLow()) {
@@ -112,11 +110,11 @@ export class ExamModusComponent {
     this.router.navigate(['../exam-result']);
   }
 
-  getQuestionListName() : string {
+  getQuestionListName(): string {
     if (this.questionService.getQuestionsCatalogue() === 'api/questions101') {
-      return 'LPIC-1 101' 
+      return 'LPIC-1 101';
     } else {
-      return 'LPIC-1 102'
+      return 'LPIC-1 102';
     }
   }
 }

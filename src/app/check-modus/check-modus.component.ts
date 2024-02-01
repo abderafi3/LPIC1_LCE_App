@@ -113,7 +113,7 @@ export class CheckModusComponent implements OnInit {
         }
       }
     }
-    //routing and rest
+    //rest
 
     this.inputText = '';
     this.userAsnwerMulti = [];
