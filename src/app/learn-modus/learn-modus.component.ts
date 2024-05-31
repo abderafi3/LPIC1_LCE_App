@@ -10,11 +10,11 @@ export class LearnModusComponent {
 
   constructor(private questionService: QuestionService) {}
 
-  getQuestionListName() : string {
+  getQuestionListName(): string {
     if (this.questionService.getQuestionsCatalogue() === 'api/questions101') {
-      return 'LPIC-1 101' 
+      return 'LPIC-1 101';
     } else {
-      return 'LPIC-1 102'
+      return 'LPIC-1 102';
     }
   }
 }

@@ -91,8 +91,17 @@
       </li>
     </ul>
 
-    <div class="row justify-content-between">
-      <div class="col-2 ms-3">
+    <div class="d-flex justify-content-between mt-3">
+      <div class="col d-flex justify-content-start ms-3">
+        <button
+          type="button"
+          class="btn btn-outline-danger mt-3 mb-3"
+          (click)="onClickEnd()"
+        >
+          End
+        </button>
+      </div>
+      <div class="col d-flex justify-content-center">
         <button
           type="button"
           class="btn btn-outline-primary mt-3 mb-3"
@@ -103,24 +112,15 @@
           Prev
         </button>
       </div>
-      <div class="col-2">
+      <div class="col d-flex justify-content-end me-3">
         <button
           type="button"
           class="btn btn-outline-primary mt-3 mb-3"
-          [disabled]="questionId === 59"
+          [disabled]="questionId === questions.length - 1"
           *ngIf="question"
           (click)="onClickNext()"
         >
           Next
-        </button>
-      </div>
-      <div class="col-1 me-2">
-        <button
-          type="button"
-          class="btn btn-outline-danger mt-3 mb-3"
-          (click)="onClickEnd()"
-        >
-          End
         </button>
       </div>
     </div>
