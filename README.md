@@ -1,5 +1,7 @@
 # LPIC1LCEApp
 
+You can find the live deployment of this Webapp at this [link](https://lpic1.up.railway.app/).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
 
 ## Development server
